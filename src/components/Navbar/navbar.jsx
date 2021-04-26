@@ -41,7 +41,7 @@ render() {
       <div>
         <MDBNavbar dark expand="md" fixed="top">
           <MDBNavbarBrand>
-            <strong className="white-text">Music Libary</strong>
+            <strong className="white-text">You Tube Clone</strong>
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={this.toggleCollapse("navbarCollapse")}/>
           <MDBCollapse
