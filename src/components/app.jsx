@@ -3,6 +3,7 @@ import axios from 'axios';
 import { MDBView } from "mdbreact";
 import Navbar from './Navbar/navbar';
 import Footer from './Footer/footer';
+import './app.css';
 
 
 
