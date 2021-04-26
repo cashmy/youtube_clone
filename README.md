@@ -19,3 +19,6 @@ Database Design Image
 
 <img src="https://github.com/cashmy/youtube_clone/blob/main/src/assets/images/Basic%20Wire%20Frame.png">
 
+#### Initial Color Palette
+
+<img src="https://github.com/cashmy/youtube_clone/blob/main/src/assets/images/color_palette.png">
