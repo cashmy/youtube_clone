@@ -1,25 +1,30 @@
-import axios from './axios'
+import http from './axios'
 
-const getAll = () => {
-    return axios.get('/youtube_clone');
-};
+class LibraryServices {
+    getAll = () => {
+    return http.get('/youtube_clone');
+    };
 
-const get = id => {
-    return axios.get(`/youtube_clone/${id}`);
-};
+    get = id => {
+    return http.get(`/youtube_clone/${id}`);
+    };
 
-const create = data => {
-    return axios.post('/youtube_clone', data);
-};
+    create = data => {
+    return http.post('/youtube_clone', data);
+    };
 
-const remove = id => {
-    return axios.delete(`youtube_clone/${id}`)
+    remove = id => {
+    return http.delete(`youtube_clone/${id}`)
+    }
+
+    likeSong = (id) => {
+    return http.patch(`youtube_clone/${id}`)
+    }
+
+    getVideo = (yt_video_id) => {
+        return `https://www.youtube.com/embed/${yt_video_id}?autoplay=1&origin=http://example.com`
+    }
+
 }
 
-const likeSong = (id) => {
-    return axios.patch(`youtube_clone/${id}`)
-}
-
-export default {
-    getAll, get, create, remove, likeSong
-};
+export default new LibraryServices();
