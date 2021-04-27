@@ -12,9 +12,11 @@ import {
   MDBDropdownToggle,
   MDBDropdownMenu, 
   MDBDropdownItem, 
-  MDBIcon 
+  MDBIcon,
+  MDBFormInline,
+  MDBBtn,
 } from "mdbreact";
-
+import '../app.css'
 
 class NavbarPage extends Component {
 state = {
@@ -71,8 +73,21 @@ render() {
               </MDBNavItem>
             </MDBNavbarNav>
 
+
+            {/* Search Component */}
             <MDBNavbarNav right>
-              <MDBNavItem>
+            <MDBFormInline className="md-form mr-auto m-0">
+                <input id="fmSearch" className="form-control form-control-sm mr-sm-2 form-white" type="text" placeholder="Search" aria-label="Search" />
+                <MDBBtn gradient="peach" size="sm" type="submit" className="mr-auto">
+                  Search
+                </MDBBtn>
+              </MDBFormInline>
+            </MDBNavbarNav>
+            
+
+            
+            <MDBNavbarNav right>
+             <MDBNavItem>
                 <MDBNavLink className="waves-effect waves-light" to="#!">
                   <MDBIcon fab icon="twitter" />
                 </MDBNavLink>

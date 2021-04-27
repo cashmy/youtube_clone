@@ -60,3 +60,11 @@
   #classicformpage label {
     color: black !important;
   }
+
+  #fmSearch {
+    color: #F9f871 !important;
+  }
+
+  #fmSearch::placeholder {
+    color: lightgrey !important;
+  }
