@@ -11,6 +11,8 @@ import { MDBView,
 import Navbar from './Navbar/navbar';
 import Footer from './Footer/footer';
 import VideoDisplay from './VideoDisplay/video_display'
+import SearchResultsTable from './SearchResults/search_results_table'
+
 import './app.css';
 
 
@@ -98,34 +100,11 @@ class App extends Component {
                                     </MDBCard>
                                 </MDBCol>
 
-                                <MDBCol className="col-md-3 mt-4">
-                                    <MDBCard>
-                                        <MDBCardBody>
-                                            Search Results Table goes here
-                                            <MDBCard className="mb-3">
-                                                <MDBCardBody>
-                                                    Video Card data
-                                                </MDBCardBody>
-                                            </MDBCard>
-                                            <MDBCard className="mb-3">
-                                                <MDBCardBody>
-                                                    Video Card data
-                                                </MDBCardBody>
-                                            </MDBCard>
-                                            <MDBCard className="mb-3">
-                                                <MDBCardBody>
-                                                    Video Card data
-                                                </MDBCardBody>
-                                            </MDBCard>
-                                            <MDBCard className="mb-3">
-                                                <MDBCardBody>
-                                                    Video Card data
-                                                </MDBCardBody>
-                                            </MDBCard>
-                                        </MDBCardBody>
-                                    </MDBCard>
+                                {/* TODO: Need to add props to SearchResutlsTable component. 
+                                            Default porps are:
+                                            search_text, related_yt_video_id */}
+                                <SearchResultsTable />
 
-                                </MDBCol>
                             </MDBRow>
                         </MDBContainer>
                     </MDBMask>

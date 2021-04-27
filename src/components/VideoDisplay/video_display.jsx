@@ -3,7 +3,6 @@ import { MDBCard,
     MDBCardBody,
 } from "mdbreact";
 
-
 /* Functional component */
 
 const VideoDisplay = (props) => {
