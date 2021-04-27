@@ -32,7 +32,7 @@ class App extends Component {
                             <MDBRow className="ml-2 mr-2 mt-5">
                                 
                                 <MDBCol className="col-md-9 mt-4">
-                                    <MDBCard id="colored-card">
+                                    <MDBCard  className="gradient-custom">
                                         <MDBCardBody>
                                             <MDBRow className="ml-2">
                                                 <MDBCol className="col-md-8">

@@ -29,11 +29,6 @@
     color: black;
   }
   
-  #colored-card {
-    background-color: #f87f5d !important;
-    color: black;
-  }
-  
 
   #classicformpage h6 {
     line-height: 1.7;
@@ -67,4 +62,15 @@
 
   #fmSearch::placeholder {
     color: lightgrey !important;
+  }
+
+  .gradient-custom {
+    /* fallback for old browsers */
+    background: #f87f5d;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(249, 248, 113, 0.95), rgba(241, 50, 36, 0.95) 100%);
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(249, 248, 113, 0.7), rgb(250, 106, 66) 100%)
   }
