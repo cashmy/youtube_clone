@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     MDBCol, 
     MDBCard, 
@@ -7,33 +7,43 @@ import {
     MDBTableHead,
     MDBTableBody,
 } from "mdbreact";
-// import axios from 'axios'
+import axios from 'axios'
 
 const SearchResultsTable = (props) => {
 
-    // const getVideos = () => {
-    //     let videoData = {}
+    const [videoData, setVideoData] = useState({})
 
-    //     if (props.search_text === '' && props.related_yt_video_id !== '') {
-    //         // TODO: Replace with services call ??
-    //         axios.get('https://www.googleapis.com/youtube/v3/search?relatedToVideoId=' + props.related_yt_video_id +'&type=video&key=AIzaSyA655YtG7MH6YYIr3ZJPsA89s3GlRhLA4I')
-    //             .then(response => { videoData = response.data })
-    //             .catch(error => {alert('There was an error! ' + error.message)})
-    //     } else {
-    //         // TODO: Replace with services call ??
-    //         axios.get('https://www.googleapis.com/youtube/v3/search?q='+ props.search_text +'&key=AIzaSyA655YtG7MH6YYIr3ZJPsA89s3GlRhLA4I')
-    //             .then(response => { videoData = response.data })
-    //             .catch(error => {alert('There was an error! ' + error.message)})
-    //     }
-    //     return videoData
-    // }
+    useEffect(() => {
+            console.log('\n*** Use Effect ***')
+            console.log('Props.search: ', props.search_text)
+            console.log('Props.related ID: ', props.related_yt_video_id )
+            if (props.search_text === '' && props.related_yt_video_id !== '') {
+                // TODO: Replace with services call ??
+                axios.get('https://www.googleapis.com/youtube/v3/search?relatedToVideoId=' + props.related_yt_video_id +'&type=video&key=AIzaSyA655YtG7MH6YYIr3ZJPsA89s3GlRhLA4I')
+                    .then(response => { 
+                        console.log("Related - Response data: ", response.data)
+                        setVideoData(response.data) 
+                    })
+                    .catch(error => {alert('There was an error! ' + error.message)})
+            } else {
+                // TODO: Replace with services call ??
+                axios.get('https://www.googleapis.com/youtube/v3/search?q='+ props.search_text +'&key=AIzaSyA655YtG7MH6YYIr3ZJPsA89s3GlRhLA4I')
+                    .then(response => {
+                        console.log("Search - Response data: ", response.data)
+                         setVideoData(response.data) })
+                    .catch(error => {alert('There was an error! ' + error.message)})
+            }
+            return 
+    }, [props.search_text, props.related_yt_video_id])
+
 
     const handleOnClick = (video) => {
         console.log("I have been clicked: ", video)
         // TODO: update props info to VideoPlayer component
     }
 
-    const mapVideoCards = (videos) => {
+    const mapVideoCards = () => {
+        console.log("Video Data: ", videoData)
         let newVideosMapResult = props.videos.map((video) => {
             video.card = 
                 <MDBCard className="mb-3"
@@ -66,7 +76,7 @@ const SearchResultsTable = (props) => {
     return (
         <MDBCol className="col-md-3 mt-4">
             <MDBCard>
-                <MDBTable scrollY borderless='true' maxHeight='1200px'>
+                <MDBTable scrollY borderless maxHeight='1200px'>
                     <MDBTableHead columns={data.columns}/>
                     <MDBTableBody rows={data.rows} />
                 </MDBTable>

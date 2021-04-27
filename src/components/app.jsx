@@ -28,10 +28,13 @@ class App extends Component {
     render() {
         return (
             <div id="classicformpage" >
-                <Navbar />
+                <Navbar />  {/* Search component */}
                 <MDBView  >
                     <MDBMask className="d-flex justify-content-center gradient">
                         <MDBContainer className="col-md-12">
+
+                            {/* Optional location for the Searchbar component */}
+
                             <MDBRow className="ml-2 mr-2 mt-5">
                                 
                                 <MDBCol className="col-md-9 mt-4">
