@@ -1,68 +1,62 @@
-#classicformpage .view {
-    background-image: url("../assets/images/youtube-button.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    height: 100vh;
-  }
-  
+  #classicformpage .view {
+      background-image: url("../assets/images/youtube-button.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      height: 100vh;
+    }
+    
   #classicformpage .gradient {
-    background: -webkit-linear-gradient(
-      45deg,
-      rgba(0, 0, 0, 0.7),
-      rgba(72, 15, 144, 0.75) 100%
-    );
-    background: -webkit-gradient(
-      linear,
-      45deg,
-      from(rgba(0, 0, 0, 0.95), rgba(72, 15, 144, 0.75) 100%)
-    );
-    background: linear-gradient(
-      45deg,
-      rgba(0, 0, 0, 0.7),
-      rgba(72, 15, 144, 0.75) 100%
-    );
-  }
+      background: -webkit-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.7),
+        rgba(67, 39, 111, 0.75) 100%
+      );
+      background: -webkit-gradient(
+        linear,
+        45deg,
+        from(rgba(0, 0, 0, 0.95), rgba(67, 39, 111, 0.75) 100%)
+      );
+      background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.7),
+        rgba(67, 39, 111, 0.75) 100%
+      );
+    } 
   
   #classicformpage .card {
     background-color: white;
     color: black;
   }
   
+  #colored-card {
+    background-color: #f87f5d !important;
+    color: black;
+  }
+  
+
   #classicformpage h6 {
     line-height: 1.7;
   }
   
   #classicformpage .navbar {
-    transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-  }
+    background: #943275 !important;
+  } 
   
+  #classicformpage .footer-copyright {
+    background: #43276F !important;
+  } 
+
   #classicformpage .top-nav-collapse {
-    background: #424f95 !important;
+    background: #943275 !important;
   }
   
   @media (max-width: 768px) {
     #classicformpage .navbar:not(.top-nav-collapse) {
-      background: #424f95 !important;
+      background: #943275 !important;
     }
   }
   
   #classicformpage label {
     color: black !important;
   }
-
-  .modal-header{
-     background-color: darkorchid ;
-  }
-
-  .modal-header.editmodal{
-    background-color: rgb(50, 53, 204) ;
- }
-
- .modal-header.deletemodal{
-  background-color: red ;
-}
-
-.modal-title {
-  color: white;
-}

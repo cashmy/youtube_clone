@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { MDBView } from "mdbreact";
+import { MDBView, 
+    MDBMask,
+    MDBContainer, 
+    MDBCard,
+    MDBRow,
+    MDBCol,
+    MDBCardBody,
+    MDBInput
+} from "mdbreact";
 import Navbar from './Navbar/navbar';
 import Footer from './Footer/footer';
 import './app.css';
@@ -9,27 +16,121 @@ import './app.css';
 
 class App extends Component {
 
-    state = {
-        songs: []
-    }
-
-    componentDidMount() {
-        this.getAllSongs();
-    }
-
-    async getAllSongs() {
-        let response = await axios.get('http://127.0.0.1:8000/songs/')
-        this.setState({ 
-            songs: response.data
-        })
-    }
-    
     render() {
         return (
-            <div id="classicformpage">
+            <div id="classicformpage" >
                 <Navbar />
-                <MDBView>
+                <MDBView  >
+                    <MDBMask className="d-flex justify-content-center gradient">
+                        <MDBContainer className="col-md-12">
+                            <MDBRow className="ml-2 mr-2 mt-5">
+                                
+                                <MDBCol className="col-md-9 mt-4">
+                                    <MDBCard id="colored-card">
+                                        <MDBCardBody>
+                                            <MDBRow className="ml-2">
+                                                <MDBCol className="col-md-8">
+                                                    <MDBRow>
+                                                        <MDBCard className="col-md-12 mb-2">
+                                                            <MDBCardBody>
+                                                                <iframe id="ytplayer" 
+                                                                        type="text/html" 
+                                                                        width="640" 
+                                                                        height="360"
+                                                                        src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+                                                                        frameborder="0"
+                                                                        title="Video Display"
+                                                                        >
+                                                                </iframe>
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                    </MDBRow>
+                                                    <MDBRow>
+                                                        <MDBCard className="col-md-12 mb-2">
+                                                            <MDBCardBody>
+                                                                Comment Entry Form
+                                                                <MDBInput>
+                                                                    Comment
+                                                                </MDBInput>
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                    </MDBRow>
+                                                </MDBCol>
 
+                                                <MDBCol className='col-md-4'>
+                                                    <MDBCard>
+                                                        <MDBCardBody>
+                                                        Comment History Table
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        </MDBCardBody>
+                                                    </MDBCard>
+                                                </MDBCol>
+                                            
+                                            </MDBRow>
+                                        </MDBCardBody>
+                                    </MDBCard>
+                                </MDBCol>
+
+                                <MDBCol className="col-md-3 mt-4">
+                                    <MDBCard>
+                                        <MDBCardBody>
+                                            Search Results Table goes here
+                                            <MDBCard className="mb-3">
+                                                <MDBCardBody>
+                                                    Video Card data
+                                                </MDBCardBody>
+                                            </MDBCard>
+                                            <MDBCard className="mb-3">
+                                                <MDBCardBody>
+                                                    Video Card data
+                                                </MDBCardBody>
+                                            </MDBCard>
+                                            <MDBCard className="mb-3">
+                                                <MDBCardBody>
+                                                    Video Card data
+                                                </MDBCardBody>
+                                            </MDBCard>
+                                            <MDBCard className="mb-3">
+                                                <MDBCardBody>
+                                                    Video Card data
+                                                </MDBCardBody>
+                                            </MDBCard>
+                                        </MDBCardBody>
+                                    </MDBCard>
+
+                                </MDBCol>
+                            </MDBRow>
+                        </MDBContainer>
+                    </MDBMask>
                 </MDBView>
                 <Footer />
             </div>
