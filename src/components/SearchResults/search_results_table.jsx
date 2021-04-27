@@ -15,12 +15,12 @@ const SearchResultsTable = (props) => {
 
         if (props.search_text === '' && props.related_yt_video_id !== '') {
             // TODO: Replace with services call ??
-            axios.get('https://www.googleapis.com/youtube/v3/search?relatedToVideoId=' + props.related_yt_video_id +'&type=video&key=AIzaSyA655YtG7MH6YYIr3ZJPsA89s3GlRhLA4I')
+            axios.get('https://www.googleapis.com/youtube/v3/search?relatedToVideoId=' + props.related_yt_video_id +'&type=video&key=AIzaSyA655YtG7MH6YYIr3ZJPsA89s3GlRhLA4I&maxResults=5')
                 .then(response => { videoData = response.data })
                 .catch(error => {alert('There was an error! ' + error.message)})
         } else {
             // TODO: Replace with services call ??
-            axios.get('https://www.googleapis.com/youtube/v3/search?q='+ props.search_text +'&key=AIzaSyA655YtG7MH6YYIr3ZJPsA89s3GlRhLA4I')
+            axios.get('https://www.googleapis.com/youtube/v3/search?q='+ props.search_text +'&key=AIzaSyA655YtG7MH6YYIr3ZJPsA89s3GlRhLA4I&maxResults=5')
                 .then(response => { videoData = response.data })
                 .catch(error => {alert('There was an error! ' + error.message)})
         }
@@ -51,15 +51,15 @@ const SearchResultsTable = (props) => {
     }
 
     const data = {
-        // columns: [
+        columns: [
 
-        //     {
-        //         label: 'Track',
-        //         field: 'track',
-        //         sort: 'asc',
-        //         width: 50
-        //     },
-        // ],
+            {
+                label: 'Track',
+                field: 'track',
+                sort: 'asc',
+                width: 50
+            },
+        ],
         rows: mapVideoCards()
     }
 
