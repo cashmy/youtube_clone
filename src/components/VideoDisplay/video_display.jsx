@@ -15,7 +15,7 @@ const VideoDisplay = (props) => {
                         width="640" 
                         height="360"
                         src={`https://www.youtube.com/embed/${props.yt_video_id}?autoplay=1&origin=http://example.com`}
-                        frameborder="0"
+                        frameBorder="0"
                         title="Video Display"
                         >
                 </iframe>
