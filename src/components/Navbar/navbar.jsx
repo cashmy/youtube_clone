@@ -16,7 +16,9 @@ import {
   MDBFormInline,
   MDBBtn,
 } from "mdbreact";
+import '../../SearchBar/searchBar.jsx';
 import '../app.css'
+import SearchBar from "../../SearchBar/searchBar.jsx";
 
 class NavbarPage extends Component {
 state = {
@@ -75,14 +77,15 @@ render() {
 
 
             {/* Search Component */}
-            <MDBNavbarNav right>
+            {/* <MDBNavbarNav right>
             <MDBFormInline className="md-form mr-auto m-0">
                 <input id="fmSearch" className="form-control form-control-sm mr-sm-2 form-white" type="text" placeholder="Search" aria-label="Search" />
                 <MDBBtn gradient="peach" size="sm" type="submit" className="mr-auto">
                   Search
                 </MDBBtn>
               </MDBFormInline>
-            </MDBNavbarNav>
+            </MDBNavbarNav> */}
+            <SearchBar />
             
 
             
