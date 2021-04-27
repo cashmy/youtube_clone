@@ -13,6 +13,12 @@ import Footer from './Footer/footer';
 import './app.css';
 
 
+/*
+The following is hierarchical view of how/where to place the developing components.
+It simulates tables by repetitive placement of items to clearly show the intended "look and feel"
+
+As the components are developed and integrated, this structure will be dramatically minimized.
+*/
 
 class App extends Component {
 
