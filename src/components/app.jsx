@@ -38,7 +38,9 @@ class App extends Component {
                                             <MDBRow className="ml-2">
                                                 <MDBCol className="col-md-8">
                                                     <MDBRow>
-                                                        {/* TODO: Need to add props to VideoDisplay component. Default is working */}
+                                                        {/* TODO: Need to add props to VideoDisplay component. 
+                                                                  Default porps are working:
+                                                                  yt_video_id, titile, description */}
                                                         <VideoDisplay />
                                                     </MDBRow>
                                                     <MDBRow>
