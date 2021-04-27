@@ -14,6 +14,7 @@ import VideoDisplay from './VideoDisplay/video_display'
 import SearchResultsTable from './SearchResults/search_results_table'
 
 import './app.css';
+import SearchBar from '../SearchBar/searchBar';
 
 
 /*
@@ -25,10 +26,30 @@ As the components are developed and integrated, this structure will be dramatica
 
 class App extends Component {
 
+    state = {
+        searchText: ''
+    }
+
+    handleCallback = (childData) => {
+        this.setState({
+            searchText: childData
+        })
+    }
+
+    handleChange = (e) => {
+        this.props.parentCallback(this.state.searchText)
+        
+    }
+
+
     render() {
+
+        console.log('App>searchText==', this.state.searchText)
+
+
         return (
             <div id="classicformpage" >
-                <Navbar />
+                <Navbar parentCallback = {this.handleCallback} onChange={this.handleChange}/>
                 <MDBView  >
                     <MDBMask className="d-flex justify-content-center gradient">
                         <MDBContainer className="col-md-12">
@@ -43,7 +64,7 @@ class App extends Component {
                                                         {/* TODO: Need to add props to VideoDisplay component. 
                                                                   Default porps are working:
                                                                   yt_video_id, titile, description */}
-                                                        <VideoDisplay />
+                                                        <VideoDisplay searchText={this.state.searchText}/>
                                                     </MDBRow>
                                                     <MDBRow>
                                                         <MDBCard className="col-md-12 mb-2">

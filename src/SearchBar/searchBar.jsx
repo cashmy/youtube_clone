@@ -21,6 +21,7 @@ class SearchBar extends Component{
     }
 
     handleSubmit = (e) => {
+        this.props.parentCallback(this.state.inputValue)
         this.setState({
             searchText: this.state.inputValue
         })

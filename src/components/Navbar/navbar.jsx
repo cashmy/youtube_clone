@@ -23,13 +23,28 @@ import SearchBar from "../../SearchBar/searchBar.jsx";
 class NavbarPage extends Component {
 state = {
   isOpen: false,
-  collapseID: ""
+  collapseID: "",
+  searchText: "",
 };
 
 toggleCollapse = collapseID => () =>
   this.setState(prevState => ({
     collapseID: prevState.collapseID !== collapseID ? collapseID : ""
   }));
+
+
+handleCallback = (childData) => {
+  this.setState({
+    searchText: childData
+  })
+}
+
+handleChange = (e) => {
+  this.props.parentCallback(this.state.searchText)
+  e.preventDefault();
+}
+
+
 
 
 render() {
@@ -40,10 +55,13 @@ render() {
       onClick={this.toggleCollapse("navbarCollapse")}
     />
   );
+
+  console.log('Navbar>searchText==', this.state.searchText)
+
   return (
     <Router>
       <div>
-        <MDBNavbar dark expand="md" fixed="top">
+        <MDBNavbar dark expand="md" fixed="top" onChange={this.handleChange}>
           <MDBNavbarBrand>
             <strong className="white-text">You Tube Clone</strong>
           </MDBNavbarBrand>
@@ -85,7 +103,7 @@ render() {
                 </MDBBtn>
               </MDBFormInline>
             </MDBNavbarNav> */}
-            <SearchBar />
+            <SearchBar parentCallback = {this.handleCallback} />
             
 
             
