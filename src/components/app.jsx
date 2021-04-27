@@ -10,6 +10,7 @@ import { MDBView,
 } from "mdbreact";
 import Navbar from './Navbar/navbar';
 import Footer from './Footer/footer';
+import VideoDisplay from './VideoDisplay/video_display'
 import './app.css';
 
 
@@ -37,19 +38,8 @@ class App extends Component {
                                             <MDBRow className="ml-2">
                                                 <MDBCol className="col-md-8">
                                                     <MDBRow>
-                                                        <MDBCard className="col-md-12 mb-2">
-                                                            <MDBCardBody>
-                                                                <iframe id="ytplayer" 
-                                                                        type="text/html" 
-                                                                        width="640" 
-                                                                        height="360"
-                                                                        src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-                                                                        frameborder="0"
-                                                                        title="Video Display"
-                                                                        >
-                                                                </iframe>
-                                                            </MDBCardBody>
-                                                        </MDBCard>
+                                                        {/* TODO: Need to add props to VideoDisplay component. Default is working */}
+                                                        <VideoDisplay />
                                                     </MDBRow>
                                                     <MDBRow>
                                                         <MDBCard className="col-md-12 mb-2">
