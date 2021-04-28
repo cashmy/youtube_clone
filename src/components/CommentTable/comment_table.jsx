@@ -1,6 +1,7 @@
 import { MDBCard, MDBCardBody, MDBCol, MDBBtn } from 'mdbreact';
 import React, {useState, useEffect} from 'react';
 import LibraryServices from '../../Services/request';
+import ModalPage from '../CommentModal/Modal';
 import './comment_table.css'
 
 export const CommentHistoryTable = (props) => {
@@ -33,12 +34,22 @@ export const CommentHistoryTable = (props) => {
                                     {comment.comment_text}
                                 </MDBCardBody>
                                 <div className='buttons'>
-                                <MDBBtn color="mdb-color" className='edit_btn'>
-                                    Edit
-                                </MDBBtn>
-                                <MDBBtn color='danger' className='delete_btn'>
-                                    Delete
-                                </MDBBtn>
+                                <ModalPage 
+                                color='mdb-color'
+                                type='Edit'
+                                title='Edit Comment'
+                                content={comment.comment_text}
+                                closeBtn='Cancel'
+                                actionBtn='Save Changes'
+                                />
+                                <ModalPage 
+                                color='danger'
+                                type='Delete'
+                                title='Delete Comment'
+                                content='Are you sure you want to delete the comment?'
+                                closeBtn='No'
+                                actionBtn='Yes'
+                                />
                                 </div>
                             </MDBCard>
                 }) : 
