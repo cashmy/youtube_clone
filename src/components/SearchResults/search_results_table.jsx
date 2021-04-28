@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {
     MDBCol, 
-    MDBCard, 
+    MDBCard,
+    MDBCardVideo, 
     MDBCardBody,
     MDBTable,
     MDBTableHead,
@@ -15,25 +16,25 @@ const SearchResultsTable = (props) => {
 
     useEffect(() => {
         // Temporarily deactivate YouTube API requests and using props data ...
-            if (props.search_text === '' && props.related_yt_video_id !== '') {
-                // TODO: Replace with services call ??
-                axios.get('https://www.googleapis.com/youtube/v3/search?relatedToVideoId=' + props.related_yt_video_id +'&type=video&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0&maxResults=10')
-                    .then(response => { 
-                        console.log("Related - Response data: ", response.data.items)
-                        setVideoData(response.data.items) 
-                    })
-                    .catch(error => {alert('There was an error! ' + error.message)})
-            } else {
-                // TODO: Replace with services call ??
-                axios.get('https://www.googleapis.com/youtube/v3/search?q='+ props.search_text +'&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0&maxResults=10')
-                    .then(response => {
-                        console.log(">>> Search - Response data: ", response.data.items)
-                         setVideoData(response.data.items) })
-                    .catch(error => {alert('There was an error! ' + error.message)})
-            }
+            // if (props.search_text === '' && props.related_yt_video_id !== '') {
+            //     // TODO: Replace with services call ??
+            //     axios.get('https://www.googleapis.com/youtube/v3/search?relatedToVideoId=' + props.related_yt_video_id +'&type=video&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0&maxResults=10')
+            //         .then(response => { 
+            //             console.log("Related - Response data: ", response.data.items)
+            //             setVideoData(response.data.items) 
+            //         })
+            //         .catch(error => {alert('There was an error! ' + error.message)})
+            // } else {
+            //     // TODO: Replace with services call ??
+            //     axios.get('https://www.googleapis.com/youtube/v3/search?q='+ props.search_text +'&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0&maxResults=10')
+            //         .then(response => {
+            //             console.log(">>> Search - Response data: ", response.data.items)
+            //              setVideoData(response.data.items) })
+            //         .catch(error => {alert('There was an error! ' + error.message)})
+            // }
             setVideoData(props.items)
             return 
-    }, [props.search_text, props.related_yt_video_id])
+    }, [props.search_text, props.related_yt_video_id, props.items])
 
 
     const handleOnClick = (video) => {
@@ -60,7 +61,7 @@ const SearchResultsTable = (props) => {
                                 style={{ cursor: 'pointer' }}
                         >
                             <MDBCardBody>
-                                Video Card data:
+                                Related Video Card data:
                                 {videoData[i].id.videoId}
                             </MDBCardBody>
                         </MDBCard>
@@ -80,21 +81,21 @@ const SearchResultsTable = (props) => {
             console.log("Video Record: ", video)
         //    video.key={yt_video_id}
             video.card = 
-                <MDBCard className="mb-3"
+                <MDBCardVideo className="mb-3"
                          onClick={() => handleOnClick(video)}
                          style={{ cursor: 'pointer' }}
                 >
                     <MDBCardBody>
-                        Video Card data:
+                        Props Video Card data:
                         {video.yt_video_id}
                         {video.title}
                         {video.description}
                     </MDBCardBody>
-                </MDBCard>
+                </MDBCardVideo>
             return video;
         });
         console.log('Map results: ',newVideosMapResult)
-        return videosMapResult
+        return newVideosMapResult
     }
 
     const data = {
@@ -147,19 +148,19 @@ SearchResultsTable.defaultProps = {
     search_text : '',
     related_yt_video_id: 'V65uAHzofbg',
     videos: [{
-        yt_video_id: '1'
+        yt_video_id: 'MArhfhV5Z8A'
     },
     {
-        yt_video_id: '2'
+        yt_video_id: 'n7yvElqUUtQ'
     },
     {
-        yt_video_id: '3'
+        yt_video_id: 'DgW14g0chfU'
     },
     {
-        yt_video_id: '4'
+        yt_video_id: 'iC1K-G8m9PI'
     },
     {
-        yt_video_id: '5'
+        yt_video_id: '5jEWNUQzrXY'
     },
     ],
     items: [
