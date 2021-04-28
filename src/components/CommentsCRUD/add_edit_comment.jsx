@@ -28,6 +28,7 @@ export default class AddEditComment extends Component {
             like: this.state.like,
             dislike: this.state.dislike
         };
+        e.preventDefault();
         LibraryServices.createComment(data)
         .then(data => {
             this.setState({
@@ -43,6 +44,8 @@ export default class AddEditComment extends Component {
         .catch(error => {
             console.log(error.response);
         });
+
+        this.newComment()
     }
 
     newComment = () => {

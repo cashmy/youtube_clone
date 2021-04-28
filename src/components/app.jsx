@@ -16,6 +16,7 @@ import './app.css';
 // import SearchBar from '../SearchBar/searchBar';
 import NavbarPage from './Navbar/navbar';
 import AddEditComment from './CommentsCRUD/add_edit_comment';
+import { CommentHistoryTable } from './CommentTable/comment_table';
 
 
 /*
@@ -71,44 +72,8 @@ class App extends Component {
                                                         <AddEditComment />
                                                     </MDBRow>
                                                 </MDBCol>
-
-                                                <MDBCol className='col-md-4'>
-                                                    <MDBCard>
-                                                        <MDBCardBody>
-                                                        Comment History Table
-                                                        <MDBCard className="mb-3">
-                                                            <MDBCardBody>
-                                                                Comment
-                                                            </MDBCardBody>
-                                                        </MDBCard>
-                                                        <MDBCard className="mb-3">
-                                                            <MDBCardBody>
-                                                                Comment
-                                                            </MDBCardBody>
-                                                        </MDBCard>
-                                                        <MDBCard className="mb-3">
-                                                            <MDBCardBody>
-                                                                Comment
-                                                            </MDBCardBody>
-                                                        </MDBCard>
-                                                        <MDBCard className="mb-3">
-                                                            <MDBCardBody>
-                                                                Comment
-                                                            </MDBCardBody>
-                                                        </MDBCard>
-                                                        <MDBCard className="mb-3">
-                                                            <MDBCardBody>
-                                                                Comment
-                                                            </MDBCardBody>
-                                                        </MDBCard>
-                                                        <MDBCard className="mb-3">
-                                                            <MDBCardBody>
-                                                                Comment
-                                                            </MDBCardBody>
-                                                        </MDBCard>
-                                                        </MDBCardBody>
-                                                    </MDBCard>
-                                                </MDBCol>
+                                                <CommentHistoryTable />
+                                                
                                             
                                             </MDBRow>
                                         </MDBCardBody>

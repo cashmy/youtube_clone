@@ -1,0 +1,16 @@
+.edit_btn {
+    width: 50px;
+    height: 40px;
+    padding: 0;
+}
+
+.delete_btn {
+    width: 50px;
+    height: 40px;
+    padding: 0;
+}
+
+.buttons {
+    display: flex;
+    
+}

@@ -1,14 +1,18 @@
-import React, {useState} from 'react';
-import { connect } from 'react-redux'
+import { MDBCard, MDBCardBody, MDBCol, MDBBtn } from 'mdbreact';
+import React, {useState, useEffect} from 'react';
+import LibraryServices from '../../Services/request';
+import './comment_table.css'
 
 export const CommentHistoryTable = (props) => {
 
-    const [commentData, setCommentData] = useState({})
+    const [commentData, setCommentData] = useState()
 
-
-
-    
-
+    useEffect(() => {
+        LibraryServices.getAll()
+        .then(response => setCommentData(response.data))
+        console.log(commentData)
+        
+    }, [commentData, setCommentData])
 
 
 
@@ -16,31 +20,39 @@ export const CommentHistoryTable = (props) => {
         console.log('Clicked Comment >>', comment)
     }
 
-    const mapCommentCards = () => {
-
-        console.log('\n*** Map Comment Cards ***')
-
-        let commentMapResults = []
-        for (let i = 0; i < commentData.length; i++) {
-
-            let card = <MDBCard className="mb-3"
-                                onClick={() => }
-
-        }
-
-
-
-
-
-    }
-
 
 
     
     return (
-        <div>
-            
-        </div>
+        <MDBCol className='col-md-4'>
+            <MDBCard>
+                <MDBCardBody>
+                {commentData ? commentData.map(comment => {
+                    return  <MDBCard className="mb-3" >
+                                <MDBCardBody {... comment}>
+                                    {comment.comment_text}
+                                </MDBCardBody>
+                                <div className='buttons'>
+                                <MDBBtn color="mdb-color" className='edit_btn'>
+                                    Edit
+                                </MDBBtn>
+                                <MDBBtn color='danger' className='delete_btn'>
+                                    Delete
+                                </MDBBtn>
+                                </div>
+                            </MDBCard>
+                }) : 
+                
+                <MDBCard className="mb-3">
+                <MDBCardBody>
+                    No Comments Yet
+                </MDBCardBody>
+                </MDBCard>
+
+                }
+                </MDBCardBody>
+            </MDBCard>
+        </MDBCol>
     )
 }
 
