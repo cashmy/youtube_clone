@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import LibraryServices from '../../Services/request';
 
-const AddEditComment =  () => {
+const AddEditComment =  (props) => {
 
     [comment, setComment] = useState();
     [like, setLike] = useState();
