@@ -15,6 +15,7 @@ import SearchResultsTable from './SearchResults/search_results_table'
 import './app.css';
 // import SearchBar from '../SearchBar/searchBar';
 import NavbarPage from './Navbar/navbar';
+import AddEditComment from './CommentsCRUD/add_edit_comment';
 
 
 /*
@@ -46,10 +47,6 @@ class App extends Component {
 
     render() {       
 
-        window.addEventListener('keydown', (event) => {
-            console.log('App State>>>', this.state.searchText)
-          });
-
         return (
             <div id="classicformpage" >
                 <Navbar />
@@ -71,14 +68,7 @@ class App extends Component {
                                                         <VideoDisplay />
                                                     </MDBRow>
                                                     <MDBRow>
-                                                        <MDBCard className="col-md-12 mb-2">
-                                                            <MDBCardBody>
-                                                                Comment Entry Form
-                                                                <MDBInput type="textarea" background label="Enter Comment...">
-                                                                    Comment
-                                                                </MDBInput>
-                                                            </MDBCardBody>
-                                                        </MDBCard>
+                                                        <AddEditComment />
                                                     </MDBRow>
                                                 </MDBCol>
 

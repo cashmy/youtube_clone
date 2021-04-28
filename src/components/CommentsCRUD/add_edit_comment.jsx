@@ -1,25 +1,102 @@
 import React, { Component, useState } from 'react';
 import LibraryServices from '../../Services/request';
+import {MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon} from 'mdbreact';
+import { Fragment } from 'react';
 
-const AddEditComment =  (props) => {
+export default class AddEditComment extends Component {
 
-    [comment, setComment] = useState();
-    [like, setLike] = useState();
-    [dislike, setDislike] = useState();
-
-
-    onChangeComment = () => {
-        this.setState
+    state = {
+        video: 3,
+        id: null,
+        comment_text: '',
+        originalComment: null,
+        like: null,
+        dislike: null
     }
 
+    onChangeComment = e => {
+        this.setState({comment_text: e.target.value})
+        console.log(this.state.comment_text)
+    }
+
+    // const saveComment = () => {
+    //     const data = {
+    //         comment: setCommentText,
+    //     };
+
+    //     LibraryServices.createComment(data)
+    //     .then(response => {
+    //         setCommentText(response.data.comment)
+    //         console.log(response)
+    //     })
+    //     .catch(error => {
+    //         console.log(error.response.data);
+    //     })
+    // }
+
+    saveComment = (e) => {
+        debugger
+        const data = {
+            video: this.state.video,
+            id: this.state.id,
+            comment_text: this.state.comment_text,
+            originalComment: this.state.originalComment,
+            like: this.state.like,
+            dislike: this.state.dislike
+        };
+        LibraryServices.createComment(data)
+        .then(data => {
+            this.setState({
+                video: data.video,
+                id: data.id,
+                commentText: data.comment_text,
+                originalComment: data.originalComment,
+                like: data.like,
+                dislike: data.dislike
+            });
+            console.log(data);
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+    }
+
+    newComment = () => {
+        this.setState({
+            video: 3,
+            id: null,
+            comment_text: '',
+            originalComment: null,
+            like: null,
+            dislike: null
+        })
+    }
 
     render() {
         return (
-            <div>
-                
-            </div>
+            <MDBCard className="col-md-12 mb-2">
+                <MDBCardBody>
+                    Comment Entry Form
+                    <MDBInput
+                    htmlFor="comment_text"
+                    type="textarea"
+                    background 
+                    label="Enter Comment..." 
+                    id="comment_text" 
+                    name="comment_text"
+                    value={this.state.commentText}
+                    onChange={this.onChangeComment}>
+                    </MDBInput>
+                    <Fragment>
+                    <MDBBtn gradient="peach" onClick={this.newComment} >
+                    Cancel
+                    </MDBBtn>
+                    <MDBBtn gradient="peach" onClick={this.saveComment} >
+                    Comment
+                    </MDBBtn>
+                    </Fragment>
+                </MDBCardBody>
+            </MDBCard>
         );
     }
 }
-
-export default AddEditComment;
