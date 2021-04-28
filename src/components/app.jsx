@@ -13,7 +13,7 @@ import Footer from './Footer/footer';
 import VideoDisplay from './VideoDisplay/video_display'
 import SearchResultsTable from './SearchResults/search_results_table'
 import './app.css';
-import SearchBar from '../SearchBar/searchBar';
+// import SearchBar from '../SearchBar/searchBar';
 import NavbarPage from './Navbar/navbar';
 
 
