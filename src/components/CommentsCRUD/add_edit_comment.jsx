@@ -19,23 +19,7 @@ export default class AddEditComment extends Component {
         console.log(this.state.comment_text)
     }
 
-    // const saveComment = () => {
-    //     const data = {
-    //         comment: setCommentText,
-    //     };
-
-    //     LibraryServices.createComment(data)
-    //     .then(response => {
-    //         setCommentText(response.data.comment)
-    //         console.log(response)
-    //     })
-    //     .catch(error => {
-    //         console.log(error.response.data);
-    //     })
-    // }
-
     saveComment = (e) => {
-        debugger
         const data = {
             video: this.state.video,
             id: this.state.id,

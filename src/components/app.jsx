@@ -31,19 +31,19 @@ class App extends Component {
         searchText: ''
     }
 
-    handleCallback = (childData) => {
+    navbarCallback = (navbarData) => {
         this.setState({
-            searchText: childData
+            searchText: navbarData
         })
     }
 
     handleChange = (value) => {
         return () => {
-          this.setState({
+        this.setState({
             searchText: value
-          })
+        })
         }
-      }
+    }
 
     render() {       
 
@@ -54,7 +54,7 @@ class App extends Component {
                     <MDBMask className="d-flex justify-content-center gradient">
                         <MDBContainer className="col-md-12">
                             {/* Optional location for the Searchbar component */}
-                            <NavbarPage parentCallback={this.handleCallback} />
+                            <NavbarPage navbar={this.navbarCallback} />
                             <MDBRow className="ml-2 mr-2 mt-5">
                                 <MDBCol className="col-md-9 mt-4">
                                     <MDBCard  className="gradient-custom">

@@ -85,7 +85,7 @@ const SearchResultsTable = (props) => {
                          onClick={() => handleOnClick(video)}
                          style={{ cursor: 'pointer' }}
                 >
-                    <MDBCardBody>
+                    <MDBCardBody >
                         Props Video Card data:
                         {video.yt_video_id}
                         {video.title}
