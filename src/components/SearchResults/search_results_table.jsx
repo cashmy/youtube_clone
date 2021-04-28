@@ -45,7 +45,8 @@ const SearchResultsTable = (props) => {
 
     const mapVideoCards = () => {
         console.log("Video Data: ", videoData)
-        let newVideosMapResult = props.videos.map((video) => {
+        let newVideosMapResult = props.videos.map((video, yt_video_id) => {
+        //    video.key={yt_video_id}
             video.card = 
                 <MDBCard className="mb-3"
                          onClick={() => handleOnClick(video)}

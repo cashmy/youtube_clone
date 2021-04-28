@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router } from 'react-router-dom';
-import {PropTypes} from 'react';
+// import {PropTypes} from 'react';
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -14,8 +14,8 @@ import {
   MDBDropdownMenu, 
   MDBDropdownItem, 
   MDBIcon,
-  MDBFormInline,
-  MDBBtn,
+  // MDBFormInline,
+  // MDBBtn,
 } from "mdbreact";
 import '../../SearchBar/searchBar.jsx';
 import '../app.css'
