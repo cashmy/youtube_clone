@@ -30,6 +30,7 @@ class SearchBar extends Component{
     }
 
 
+
     render() {
 
         console.log('SearchBar>searchText=',this.state.searchText)
@@ -46,6 +47,7 @@ class SearchBar extends Component{
                         aria-label="Search"
                         onChange={this.handleOnChange} 
                         value={this.state.inputValue}
+                        
                         />
                     <MDBBtn gradient="peach" size="sm" type="submit" className="mr-auto" onClick={this.handleSubmit}>
                         Search

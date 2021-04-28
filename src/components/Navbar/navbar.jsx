@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router } from 'react-router-dom';
+import {PropTypes} from 'react';
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -39,12 +40,10 @@ handleCallback = (childData) => {
   })
 }
 
-handleChange = (e) => {
+handleChange = (e) => { 
   this.props.parentCallback(this.state.searchText)
   e.preventDefault();
 }
-
-
 
 
 render() {
@@ -60,8 +59,8 @@ render() {
 
   return (
     <Router>
-      <div>
-        <MDBNavbar dark expand="md" fixed="top" onChange={this.handleChange}>
+      <div onClick={this.handleChange}>
+        <MDBNavbar dark expand="md" fixed="top" >
           <MDBNavbarBrand>
             <strong className="white-text">You Tube Clone</strong>
           </MDBNavbarBrand>
@@ -103,7 +102,8 @@ render() {
                 </MDBBtn>
               </MDBFormInline>
             </MDBNavbarNav> */}
-            <SearchBar parentCallback = {this.handleCallback} />
+            
+            <SearchBar parentCallback={this.handleCallback} />
             
 
             

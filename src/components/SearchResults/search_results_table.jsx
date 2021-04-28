@@ -39,6 +39,7 @@ const SearchResultsTable = (props) => {
 
     const handleOnClick = (video) => {
         console.log("I have been clicked: ", video)
+        console.log(props.search_text)
         // TODO: update props info to VideoPlayer component
     }
 
