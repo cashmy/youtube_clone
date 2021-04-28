@@ -74,7 +74,7 @@ class App extends Component {
                                                         <MDBCard className="col-md-12 mb-2">
                                                             <MDBCardBody>
                                                                 Comment Entry Form
-                                                                <MDBInput>
+                                                                <MDBInput type="textarea" background label="Enter Comment...">
                                                                     Comment
                                                                 </MDBInput>
                                                             </MDBCardBody>
