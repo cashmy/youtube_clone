@@ -1,11 +1,6 @@
-import { render } from '@testing-library/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { Component } from 'react';
 import {MDBNavbarNav, MDBBtn, MDBFormInline} from 'mdbreact';
-import SearchResultsTable from '.././components/SearchResults/search_results_table';
-import axios from 'axios';
-
-
 
 class SearchBar extends Component{
 
