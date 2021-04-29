@@ -17,7 +17,7 @@ import {
   // MDBFormInline,
   // MDBBtn,
 } from "mdbreact";
-import '../../SearchBar/searchBar.jsx';
+
 import '../app.css'
 import SearchBar from "../../SearchBar/searchBar.jsx";
 
@@ -92,20 +92,9 @@ render() {
               </MDBNavItem>
             </MDBNavbarNav>
 
-
-            {/* Search Component */}
-            {/* <MDBNavbarNav right>
-            <MDBFormInline className="md-form mr-auto m-0">
-                <input id="fmSearch" className="form-control form-control-sm mr-sm-2 form-white" type="text" placeholder="Search" aria-label="Search" />
-                <MDBBtn gradient="peach" size="sm" type="submit" className="mr-auto">
-                  Search
-                </MDBBtn>
-              </MDBFormInline>
-            </MDBNavbarNav> */}
             
             <SearchBar parentCallback={this.handleCallback} />
             
-
             
             <MDBNavbarNav right>
              <MDBNavItem>

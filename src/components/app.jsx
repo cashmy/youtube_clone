@@ -12,7 +12,6 @@ import Footer from './Footer/footer';
 import VideoDisplay from './VideoDisplay/video_display'
 import SearchResultsTable from './SearchResults/search_results_table'
 import './app.css';
-// import SearchBar from '../SearchBar/searchBar';
 import NavbarPage from './Navbar/navbar';
 import AddEditComment from './CommentsCRUD/add_edit_comment';
 import { CommentHistoryTable } from './CommentTable/comment_table';
@@ -53,7 +52,7 @@ class App extends Component {
                 <MDBView  >
                     <MDBMask className="d-flex justify-content-center gradient">
                         <MDBContainer className="col-md-12">
-                            {/* Optional location for the Searchbar component */}
+
                             <NavbarPage parentCallback={this.handleCallback} />
                             <MDBRow className="ml-2 mr-2 mt-5">
                                 <MDBCol className="col-md-9 mt-4">

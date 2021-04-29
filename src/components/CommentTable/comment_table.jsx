@@ -12,9 +12,8 @@ export const CommentHistoryTable = (props) => {
     useEffect(() => {
         LibraryServices.getAll()
         .then(response => setCommentData(response.data))
-        // console.log(commentData)
         
-    }, [commentData, setCommentData])
+    }, [])
 
     const handleLike = (comment) => {
         console.log('User liked song >', comment);

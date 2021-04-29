@@ -9,8 +9,9 @@ const getVideoInfo = async (yt_video_id) => {
 
     const response = await yt_httpClient.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+ yt_video_id +'&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0')
     
-    console.log('\n\n*** Services - outside ***')
-    console.log('Video Snipet :', response.data.items[0].snippet, '\n')
+    console.log('\n\n*** Services ***')
+    console.log('Video Snipet :', response.data.items[0].snippet.title)
+    console.log('Video Snipet :', response.data.items[0].snippet.description, '\n')
     videoData['title'] = response.data.items[0].snippet.title
     videoData['desription'] = response.data.items[0].snippet.description
 

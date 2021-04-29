@@ -59,7 +59,7 @@ const SearchResultsTable = (props) => {
         for (let i = 0; i < videoData.length; i++) {
 
 
-                console.log('Inside loop: ', i)
+                // console.log('Inside loop: ', i)
                 // axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+ videoData[i].id.videoId +'&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0')
                 //     .then(response => {
 
