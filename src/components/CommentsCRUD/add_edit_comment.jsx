@@ -75,7 +75,6 @@ export default class AddEditComment extends Component {
     render() {
         return (
             <MDBCard className="col-md-12 mb-2">
-<<<<<<< HEAD
                 <MDBCardBody>
                     Comment Entry Form
                     <MDBInput
@@ -98,57 +97,6 @@ export default class AddEditComment extends Component {
                     </Fragment>
                 </MDBCardBody>
             </MDBCard>
-=======
-            <MDBCardBody>
-                Edit Comment
-                <MDBInput
-                htmlFor="comment_text"
-                type="textarea"
-                background  
-                id="comment_text" 
-                name="comment_text"
-                value={state.commentText}
-                onChange={onChangeComment}>
-                </MDBInput>
-                <MDBBtn gradient="peach" onClick={newComment} >
-                Cancel
-                </MDBBtn>
-                <MDBBtn gradient="peach" onClick={updateComment} >
-                Update
-                </MDBBtn>
-            </MDBCardBody>
-        </MDBCard>
-
-        :
-
-        <MDBCard className="col-md-12 mb-2">
-        <MDBCardBody>
-            Post Comment
-            <MDBInput
-            htmlFor="comment_text"
-            type="textarea"
-            background  
-            id="comment_text" 
-            name="comment_text"
-            value={state.commentText}
-            onChange={onChangeComment}>
-            </MDBInput>
-            <Fragment>
-            <MDBBtn gradient="peach" onClick={newComment} >
-            Cancel
-            </MDBBtn>
-            <MDBBtn gradient="peach" onClick={saveComment} >
-            Comment
-            </MDBBtn>
-            </Fragment>
-        </MDBCardBody>
-        </MDBCard>
-        
-        
-            }
-            </>
-
->>>>>>> 18b2d89e415c8848faff847cff8390291269c9b3
         );
     }
 }

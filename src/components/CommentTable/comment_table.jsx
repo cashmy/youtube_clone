@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import { MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBMask, MDBView } from 'mdbreact';
 import React, {useState, useEffect} from 'react';
 import LibraryServices from '../../Services/request';
@@ -91,4 +89,3 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     
 }
->>>>>>> 18b2d89e415c8848faff847cff8390291269c9b3
