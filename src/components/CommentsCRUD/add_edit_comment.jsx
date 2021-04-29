@@ -3,39 +3,33 @@ import LibraryServices from '../../Services/request';
 import {MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon} from 'mdbreact';
 import { Fragment } from 'react';
 
-export default class AddEditComment extends Component {
+const AddEditComment = (props) => {
 
-    state = {
+    const [state, setState] = useState({
         video: 3,
         id: null,
         comment_text: '',
         originalComment: null,
         like: null,
         dislike: null
-    }
+    })
 
-    onChangeComment = e => {
-        this.setState({comment_text: e.target.value})
+    const onChangeComment = e => {
+        setState({comment_text: e.target.value})
         console.log(this.state.comment_text)
     }
 
-    // const saveComment = () => {
-    //     const data = {
-    //         comment: setCommentText,
-    //     };
+    const updateComment = (e) => {
+        LibraryServices.update(state.id, state.comment_text)
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
 
-    //     LibraryServices.createComment(data)
-    //     .then(response => {
-    //         setCommentText(response.data.comment)
-    //         console.log(response)
-    //     })
-    //     .catch(error => {
-    //         console.log(error.response.data);
-    //     })
-    // }
-
-    saveComment = (e) => {
-        debugger
+    const saveComment = (e) => {
         const data = {
             video: this.state.video,
             id: this.state.id,
@@ -44,9 +38,10 @@ export default class AddEditComment extends Component {
             like: this.state.like,
             dislike: this.state.dislike
         };
+        e.preventDefault();
         LibraryServices.createComment(data)
         .then(data => {
-            this.setState({
+            setState({
                 video: data.video,
                 id: data.id,
                 commentText: data.comment_text,
@@ -59,10 +54,12 @@ export default class AddEditComment extends Component {
         .catch(error => {
             console.log(error.response);
         });
+
+        newComment()
     }
 
-    newComment = () => {
-        this.setState({
+    const newComment = () => {
+        setState({
             video: 3,
             id: null,
             comment_text: '',
@@ -72,31 +69,62 @@ export default class AddEditComment extends Component {
         })
     }
 
-    render() {
         return (
+            <>
+            {props.update ? 
+            
             <MDBCard className="col-md-12 mb-2">
-                <MDBCardBody>
-                    Comment Entry Form
-                    <MDBInput
-                    htmlFor="comment_text"
-                    type="textarea"
-                    background 
-                    label="Enter Comment..." 
-                    id="comment_text" 
-                    name="comment_text"
-                    value={this.state.commentText}
-                    onChange={this.onChangeComment}>
-                    </MDBInput>
-                    <Fragment>
-                    <MDBBtn gradient="peach" onClick={this.newComment} >
-                    Cancel
-                    </MDBBtn>
-                    <MDBBtn gradient="peach" onClick={this.saveComment} >
-                    Comment
-                    </MDBBtn>
-                    </Fragment>
-                </MDBCardBody>
-            </MDBCard>
+            <MDBCardBody>
+                Edit Comment
+                <MDBInput
+                htmlFor="comment_text"
+                type="textarea"
+                background  
+                id="comment_text" 
+                name="comment_text"
+                label={props.comment}
+                value={state.commentText}
+                onChange={onChangeComment}>
+                </MDBInput>
+                <MDBBtn gradient="peach" onClick={newComment} >
+                Cancel
+                </MDBBtn>
+                <MDBBtn gradient="peach" onClick={updateComment} >
+                Update
+                </MDBBtn>
+            </MDBCardBody>
+        </MDBCard>
+
+        :
+
+        <MDBCard className="col-md-12 mb-2">
+        <MDBCardBody>
+            Post Comment
+            <MDBInput
+            htmlFor="comment_text"
+            type="textarea"
+            background  
+            id="comment_text" 
+            name="comment_text"
+            value={state.commentText}
+            onChange={onChangeComment}>
+            </MDBInput>
+            <Fragment>
+            <MDBBtn gradient="peach" onClick={newComment} >
+            Cancel
+            </MDBBtn>
+            <MDBBtn gradient="peach" onClick={saveComment} >
+            Comment
+            </MDBBtn>
+            </Fragment>
+        </MDBCardBody>
+        </MDBCard>
+        
+        
+            }
+            </>
+
         );
-    }
 }
+
+export default AddEditComment

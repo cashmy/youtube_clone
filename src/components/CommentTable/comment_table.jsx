@@ -16,11 +16,27 @@ export const CommentHistoryTable = (props) => {
         
     }, [commentData, setCommentData])
 
+    const handleLike = (comment) => {
+        console.log('User liked song >', comment);
+        //Add logic if button has already been pressed or accidentally liked
+        if (comment.like == 'true'){
+            setCommentData({
+                commentData
+            })
+        }
+        else {
+            comment.like = 'true'
+        }
+
+    }
+
 
 
     const handleOnClick = (comment) => {
         console.log('Clicked Comment >>', comment)
         //Todo update props to AddEditComment component
+        
+
     }
 
     
@@ -38,6 +54,8 @@ export const CommentHistoryTable = (props) => {
                             {comment.comment_text}
                         </MDBCardBody>
                         <div className='buttons' style={{display: 'flex', flexDirection:'row'}}>
+
+                        {/* Edit Comment Modal */}
                         {/* <ModalPage
                         color='mdb-color'
                         type='Edit'
@@ -47,6 +65,8 @@ export const CommentHistoryTable = (props) => {
                         closeBtn='Cancel'
                         actionBtn='Save Changes'
                         /> */}
+
+                        {/* Delete Comment Modal */}
                         <ModalPage
                         color='danger'
                         type='Delete'
@@ -57,11 +77,25 @@ export const CommentHistoryTable = (props) => {
                         actionBtn='Yes'
                         style={{display:'flex'}}
                         />
-                        <MDBBtn tag='a' size='sm' floating color='blue'>
-                            <MDBIcon icon='thumbs-up' />
+                        {/* {comment.like ?
+                        <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)} disabled >
+                        <MDBIcon size='lg' icon='thumbs-up' />
                         </MDBBtn>
-                        <MDBBtn tag='a' size='sm' floating color='blue'>
-                            <MDBIcon icon='thumbs-down' />
+                        <></>
+                        :
+                        <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)} >
+                        <MDBIcon size='lg' icon='thumbs-up' />
+                        </MDBBtn>
+                        } */}
+
+                        <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)} >
+                        <MDBIcon size='lg' icon='thumbs-up' />
+                        </MDBBtn>
+                        
+                            
+
+                        <MDBBtn tag='a' size='sm' color='blue'>
+                            <MDBIcon size='lg' icon='thumbs-down' />
                         </MDBBtn>
 
                         </div>
@@ -80,7 +114,9 @@ export const CommentHistoryTable = (props) => {
             </MDBCard>
         </MDBCol>
     )
+
 }
+
 
 const mapStateToProps = (state) => ({
     
@@ -89,3 +125,5 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     
 }
+
+
