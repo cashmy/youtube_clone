@@ -17,7 +17,7 @@ toggle = nr => () => {
 render() {
     return (
         <MDBContainer>
-        <MDBBtn className='action_btn' onClick={this.toggle(12)} color={this.props.color}>{this.props.type}</MDBBtn>
+        <MDBBtn  size='sm' className='action_btn' onClick={this.toggle(12)} color={this.props.color}>{this.props.type}</MDBBtn>
         <MDBModal isOpen={this.state.modal12} toggle={this.toggle(12)} backdrop={false}>
             <MDBModalHeader className='modal_header' toggle={this.toggle(12)}>{this.props.title}</MDBModalHeader>
             <MDBModalBody>

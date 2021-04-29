@@ -1,14 +1,3 @@
-.action_btn {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    width: 80px;
-    height: 20px;
-    padding: 0;
-    text-align: center;
-
-    
-}
 
 .btn {
     padding: 0;

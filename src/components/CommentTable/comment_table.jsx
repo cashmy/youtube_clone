@@ -1,4 +1,4 @@
-import { MDBCard, MDBCardBody, MDBCol, MDBMask, MDBView } from 'mdbreact';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBMask, MDBView } from 'mdbreact';
 import React, {useState, useEffect} from 'react';
 import LibraryServices from '../../Services/request';
 import ModalPage from '../CommentModal/Modal';
@@ -38,7 +38,7 @@ export const CommentHistoryTable = (props) => {
                             {comment.comment_text}
                         </MDBCardBody>
                         <div className='buttons' style={{display: 'flex', flexDirection:'row'}}>
-                        <ModalPage
+                        {/* <ModalPage
                         color='mdb-color'
                         type='Edit'
                         inputType='textarea'
@@ -46,7 +46,7 @@ export const CommentHistoryTable = (props) => {
                         content={comment.comment_text}
                         closeBtn='Cancel'
                         actionBtn='Save Changes'
-                        />
+                        /> */}
                         <ModalPage
                         color='danger'
                         type='Delete'
@@ -55,7 +55,15 @@ export const CommentHistoryTable = (props) => {
                         content='Are you sure you want to delete the comment?'
                         closeBtn='No'
                         actionBtn='Yes'
+                        style={{display:'flex'}}
                         />
+                        <MDBBtn tag='a' size='sm' floating color='blue'>
+                            <MDBIcon icon='thumbs-up' />
+                        </MDBBtn>
+                        <MDBBtn tag='a' size='sm' floating color='blue'>
+                            <MDBIcon icon='thumbs-down' />
+                        </MDBBtn>
+
                         </div>
                     </MDBCard>
                     </>

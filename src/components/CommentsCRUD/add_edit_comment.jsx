@@ -85,14 +85,12 @@ const AddEditComment = (props) => {
                 value={state.commentText}
                 onChange={onChangeComment}>
                 </MDBInput>
-                <Fragment>
                 <MDBBtn gradient="peach" onClick={newComment} >
                 Cancel
                 </MDBBtn>
                 <MDBBtn gradient="peach" onClick={updateComment} >
                 Update
                 </MDBBtn>
-                </Fragment>
             </MDBCardBody>
         </MDBCard>
 
