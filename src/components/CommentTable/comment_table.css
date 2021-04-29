@@ -1,16 +1,7 @@
-.edit_btn {
-    width: 50px;
-    height: 40px;
-    padding: 0;
+.btn-mdb-color {
+    font-size: .5rem;
 }
 
-.delete_btn {
-    width: 50px;
-    height: 40px;
+.btn {
     padding: 0;
-}
-
-.buttons {
-    display: flex;
-    
 }

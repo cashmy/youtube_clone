@@ -33,19 +33,21 @@ export const CommentHistoryTable = (props) => {
                                 <MDBCardBody {... comment}>
                                     {comment.comment_text}
                                 </MDBCardBody>
-                                <div className='buttons'>
-                                <ModalPage 
+                                <div className='buttons' style={{display: 'flex', flexDirection:'row'}}>
+                                <ModalPage
                                 color='mdb-color'
                                 type='Edit'
+                                inputType='textarea'
                                 title='Edit Comment'
                                 content={comment.comment_text}
                                 closeBtn='Cancel'
                                 actionBtn='Save Changes'
                                 />
-                                <ModalPage 
+                                <ModalPage
                                 color='danger'
                                 type='Delete'
                                 title='Delete Comment'
+                                inputType = 'text'
                                 content='Are you sure you want to delete the comment?'
                                 closeBtn='No'
                                 actionBtn='Yes'

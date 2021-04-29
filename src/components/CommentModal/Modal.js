@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
+import './Modal.css'
 
 class ModalPage extends Component {
 state = {
@@ -16,11 +17,15 @@ toggle = nr => () => {
 render() {
     return (
         <MDBContainer>
-        <MDBBtn onClick={this.toggle(12)} color={this.props.color}>{this.props.type}</MDBBtn>
+        <MDBBtn className='action_btn' onClick={this.toggle(12)} color={this.props.color}>{this.props.type}</MDBBtn>
         <MDBModal isOpen={this.state.modal12} toggle={this.toggle(12)} backdrop={false}>
-            <MDBModalHeader toggle={this.toggle(12)}>{this.props.title}</MDBModalHeader>
+            <MDBModalHeader className='modal_header' toggle={this.toggle(12)}>{this.props.title}</MDBModalHeader>
             <MDBModalBody>
-            {this.props.content}
+            {this.props.type == 'Edit' ? 
+            <MDBInput type={this.props.inputType} value={this.props.content}  />
+            :
+            this.props.content
+            }
             </MDBModalBody>
             <MDBModalFooter>
             <MDBBtn color="secondary" onClick={this.toggle(12)}>{this.props.closeBtn}</MDBBtn>
