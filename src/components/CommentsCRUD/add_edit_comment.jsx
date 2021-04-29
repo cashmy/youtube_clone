@@ -63,7 +63,7 @@ export default class AddEditComment extends Component {
         return (
             <MDBCard className="col-md-12 mb-2">
                 <MDBCardBody>
-                    Comment Entry Form
+                    Post Comment
                     <MDBInput
                     htmlFor="comment_text"
                     type="textarea"

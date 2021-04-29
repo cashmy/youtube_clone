@@ -21,15 +21,14 @@ export const CommentHistoryTable = (props) => {
         console.log('Clicked Comment >>', comment)
     }
 
-
-
     
     return (
         <MDBCol className='col-md-4'>
             <MDBCard>
                 <MDBCardBody>
                 {commentData ? commentData.map(comment => {
-                    return  <MDBCard className="mb-3" >
+                    return  <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} >
+
                                 <MDBCardBody {... comment}>
                                     {comment.comment_text}
                                 </MDBCardBody>
