@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import {
-    MDBCol, 
+    MDBCol,
+    MDBRow, 
     MDBCard,
-    MDBCardVideo, 
     MDBCardBody,
+    MDBCardTitle,
+    MDBCardText,
     MDBTable,
-    MDBTableHead,
     MDBTableBody,
 } from "mdbreact";
 import axios from 'axios'
+import './search_results_table.css'
 
 const SearchResultsTable = (props) => {
 
@@ -20,7 +22,6 @@ const SearchResultsTable = (props) => {
             //     // TODO: Replace with services call ??
             //     axios.get('https://www.googleapis.com/youtube/v3/search?relatedToVideoId=' + props.related_yt_video_id +'&type=video&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0&maxResults=10')
             //         .then(response => { 
-            //             console.log("Related - Response data: ", response.data.items)
             //             setVideoData(response.data.items) 
             //         })
             //         .catch(error => {alert('There was an error! ' + error.message)})
@@ -28,7 +29,6 @@ const SearchResultsTable = (props) => {
             //     // TODO: Replace with services call ??
             //     axios.get('https://www.googleapis.com/youtube/v3/search?q='+ props.search_text +'&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0&maxResults=10')
             //         .then(response => {
-            //             console.log(">>> Search - Response data: ", response.data.items)
             //              setVideoData(response.data.items) })
             //         .catch(error => {alert('There was an error! ' + error.message)})
             // }
@@ -54,57 +54,139 @@ const SearchResultsTable = (props) => {
         // Cannot use "videoData.map" as it is an object (checked using typeof function)
         // So iterating over state variable and building my own array
         let videosMapResult = []
+        let tempTitle = ''
+        let tempDescription = ''
         for (let i = 0; i < videoData.length; i++) {
 
-            let card = <MDBCard className="mb-3"
-                                onClick={() => handleOnClick(card)}
-                                style={{ cursor: 'pointer' }}
-                        >
+
+                console.log('Inside loop: ', i)
+                // axios.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+ videoData[i].id.videoId +'&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0')
+                //     .then(response => {
+
+                //         tempTitle = 'snippet.title'
+                //         tempDescription = 'snippet.description'
+                //         console.log('Snippet Title: ' + tempTitle)
+                //         console.log('>>> ',response.data.items[0].snippet.title)
+                //         let card = 
+                //             <MDBCard className="mb-3"
+                //                     onClick={() => handleOnClick(videoData[i].id.videoId )}
+                //                     style={{ cursor: 'pointer' }}
+                //             >
+                //                 <MDBRow className="g-0">
+                //                     <MDBCol className="md-4">
+            
+                //                             <iframe id="ytplayer" 
+                //                             type="text/html"
+                //                             width="150"  
+                //                             height="auto"
+                //                             src={'https://www.youtube.com/embed/' + videoData[i].id.videoId + '?autoplay=1&origin=http://example.com'}
+                //                             frameBorder="0"
+                //                             title="Video Display"
+                //                             />
+                //                     </MDBCol>
+                //                     <MDBCol className="md-8">
+                //                         <MDBCardBody>
+                //                             <MDBCardTitle>
+                //                                 response.data.items[0].snippet.title
+                //                             </MDBCardTitle>
+                //                             <MDBCardText>
+                //                                 response.data.items[0].snippet.description
+                //                             </MDBCardText>
+                //                         </MDBCardBody>
+                //                     </MDBCol>
+                //                 </MDBRow>
+                //             </MDBCard>
+        
+                //         videosMapResult.push({
+                //             yt_video_id: videoData[i].id.videoId, 
+                //             card: card 
+                //             })
+                //         })
+                //     .catch(error => {alert('There was an error! ' + error.message)})
+            
+
+            let card = 
+                <MDBCard className="mb-3"
+                         onDoubleClick={() => handleOnClick(videoData[i].id.videoId)}
+                         style={{ cursor: 'pointer' }}
+                >
+                    <MDBRow className="g-0">
+                        <MDBCol className="md-4">
+
+                                <iframe id="ytplayer" 
+                                type="text/html"
+                                width="150"  
+                                height="auto"
+                                src={'https://www.youtube.com/embed/' + videoData[i].id.videoId + '?autoplay=1&origin=http://example.com'}
+                                frameBorder="0"
+                                title="Video Display"
+                                />
+                        </MDBCol>
+                        <MDBCol className="md-8">
                             <MDBCardBody>
-                                Related Video Card data:
-                                {videoData[i].id.videoId}
+                                <MDBCardTitle>
+                                    Title
+                                </MDBCardTitle>
+                                <MDBCardText>
+                                    Description
+                                </MDBCardText>
                             </MDBCardBody>
-                        </MDBCard>
+                        </MDBCol>
+                    </MDBRow>
+                </MDBCard>
 
             videosMapResult.push({
-                yt_video_id: videoData[i].id.videoId, 
+                yt_video_id: videoData[i].id.videoId,
                 card: card 
                 })
          }
 
 
 
-        console.log('VideosMapResult: ', videosMapResult)
-        console.log('typeof videosMapResult: ', typeof(videosMapResult))
+        // console.log('VideosMapResult: ', videosMapResult)
+        // console.log('typeof videosMapResult: ', typeof(videosMapResult))
 
-        let newVideosMapResult = props.videos.map((video) => {
-            console.log("Video Record: ", video)
-        //    video.key={yt_video_id}
-            video.card = 
-                <MDBCardVideo className="mb-3"
-                         onClick={() => handleOnClick(video)}
-                         style={{ cursor: 'pointer' }}
-                >
-                    <MDBCardBody>
-                        Props Video Card data:
-                        {video.yt_video_id}
-                        {video.title}
-                        {video.description}
-                    </MDBCardBody>
-                </MDBCardVideo>
-            return video;
-        });
-        console.log('Map results: ',newVideosMapResult)
-        return newVideosMapResult
+        // let newVideosMapResult = props.videos.map((video) => {
+        //     console.log("Video Record: ", video)
+        // //    video.key={yt_video_id}
+        //     video.card = 
+        //         <MDBCard className="mb-3"
+        //                  onClick={() => handleOnClick(video)}
+        //                  style={{ cursor: 'pointer' }}
+        //         >
+        //             <MDBRow className="g-0">
+        //                 <MDBCol className="md-4">
+
+        //                         <iframe id="ytplayer" 
+        //                         type="text/html"
+        //                         width="150"  
+        //                         height="auto"
+        //                         src={`https://www.youtube.com/embed/${video.yt_video_id}?autoplay=1&origin=http://example.com`}
+        //                         frameBorder="0"
+        //                         title="Video Display"
+        //                         />
+        //                 </MDBCol>
+        //                 <MDBCol className="md-8">
+        //                     <MDBCardBody>
+        //                         <MDBCardTitle>
+        //                             Title
+        //                         </MDBCardTitle>
+        //                         <MDBCardText>
+        //                             Description
+        //                         </MDBCardText>
+        //                     </MDBCardBody>
+        //                 </MDBCol>
+        //             </MDBRow>
+        //         </MDBCard>
+        //     return video;
+        // });
+
+         console.log('Video Map Results: ', videosMapResult)
+        return videosMapResult
     }
 
     const data = {
-        columns: [
-            {
-                label: 'Video List',
-                field: 'card'
-            },
-        ],
+
         rows: mapVideoCards()
     }
 
@@ -112,32 +194,8 @@ const SearchResultsTable = (props) => {
         <MDBCol className="col-md-3 mt-4">
             <MDBCard>
                 <MDBTable scrollY borderless maxHeight='1200px'>
-                    <MDBTableHead columns={data.columns}/>
                     <MDBTableBody rows={data.rows} />
                 </MDBTable>
-                {/* <MDBCardBody>
-                    Search Results: {props.search_text} or {props.related_yt_video_id}
-                    <MDBCard className="mb-3">
-                        <MDBCardBody>
-                            Video Card data
-                        </MDBCardBody>
-                    </MDBCard>
-                    <MDBCard className="mb-3">
-                        <MDBCardBody>
-                            Video Card data
-                        </MDBCardBody>
-                    </MDBCard>
-                    <MDBCard className="mb-3">
-                        <MDBCardBody>
-                            Video Card data
-                        </MDBCardBody>
-                    </MDBCard>
-                    <MDBCard className="mb-3">
-                        <MDBCardBody>
-                            Video Card data
-                        </MDBCardBody>
-                    </MDBCard>
-                </MDBCardBody> */}
             </MDBCard>
         </MDBCol>
     )
@@ -202,6 +260,46 @@ SearchResultsTable.defaultProps = {
             "id": {
                 "kind": "youtube#video",
                 "videoId": "5jEWNUQzrXY"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "YAG-UiDGoxdwNfPvxAn05hV82fU",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "u4XXkujwPus"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "DCN-1vaFZfULokPAMciHaFOzfoM",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "p597uPO1RYc"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "dHfFIgUVPxLiURhvKclmE1WDw6g",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "fEGBbblR3YE"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "n9Xm2UYGiuubaRVrOVOohQflJcI",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "5esSnoLjdqc"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "Z87nbuWus2-oM1NXtEZ6oywU9GI",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "CVL1E1v-lF0"
             }
         }
     ]
