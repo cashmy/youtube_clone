@@ -13,6 +13,10 @@ class LibraryServices {
     return http.post('/comments', data);
     };
 
+    updateComment = (id, data) => {
+        return http.put(`/comments${id}`, data)
+    }
+
     remove = id => {
     return http.delete(`comments/${id}`)
     }

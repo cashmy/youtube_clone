@@ -2,6 +2,7 @@ import { MDBCard, MDBCardBody, MDBCol, MDBBtn } from 'mdbreact';
 import React, {useState, useEffect} from 'react';
 import LibraryServices from '../../Services/request';
 import ModalPage from '../CommentModal/Modal';
+import AddEditComment from '../CommentsCRUD/add_edit_comment';
 import './comment_table.css'
 
 export const CommentHistoryTable = (props) => {
@@ -11,7 +12,7 @@ export const CommentHistoryTable = (props) => {
     useEffect(() => {
         LibraryServices.getAll()
         .then(response => setCommentData(response.data))
-        console.log(commentData)
+        // console.log(commentData)
         
     }, [commentData, setCommentData])
 
