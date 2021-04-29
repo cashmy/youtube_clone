@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 import { MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBMask, MDBView } from 'mdbreact';
 import React, {useState, useEffect} from 'react';
 import LibraryServices from '../../Services/request';
@@ -114,4 +116,17 @@ export const CommentHistoryTable = (props) => {
             </MDBCard>
         </MDBCol>
     )
+<<<<<<< HEAD
 }
+=======
+}
+
+const mapStateToProps = (state) => ({
+    
+})
+
+const mapDispatchToProps = {
+    
+}
+>>>>>>> 18b2d89e415c8848faff847cff8390291269c9b3
+>>>>>>> 0fc399ae28d57e6a0aa8828e49f3c27270642074

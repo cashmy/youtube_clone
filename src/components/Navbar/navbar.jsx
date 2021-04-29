@@ -34,14 +34,14 @@ toggleCollapse = collapseID => () =>
   }));
 
 
-searchBarCallback = (searchBarData) => {
+handleCallback = (childData) => {
   this.setState({
-    searchText: searchBarData
+    searchText: childData
   })
 }
 
 handleChange = (e) => { 
-  this.props.navbar(this.state.searchText)
+  this.props.parentCallback(this.state.searchText)
   e.preventDefault();
 }
 
@@ -103,7 +103,7 @@ render() {
               </MDBFormInline>
             </MDBNavbarNav> */}
             
-            <SearchBar searchBar={this.searchBarCallback} />
+            <SearchBar parentCallback={this.handleCallback} />
             
 
             

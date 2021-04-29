@@ -16,7 +16,6 @@ import './app.css';
 // import SearchBar from '../SearchBar/searchBar';
 import NavbarPage from './Navbar/navbar';
 import AddEditComment from './CommentsCRUD/add_edit_comment';
-import { CommentHistoryTable } from './CommentTable/comment_table';
 
 
 /*
@@ -32,19 +31,19 @@ class App extends Component {
         searchText: ''
     }
 
-    navbarCallback = (navbarData) => {
+    handleCallback = (childData) => {
         this.setState({
-            searchText: navbarData
+            searchText: childData
         })
     }
 
     handleChange = (value) => {
         return () => {
-        this.setState({
+          this.setState({
             searchText: value
-        })
+          })
         }
-    }
+      }
 
     render() {       
 
@@ -55,7 +54,7 @@ class App extends Component {
                     <MDBMask className="d-flex justify-content-center gradient">
                         <MDBContainer className="col-md-12">
                             {/* Optional location for the Searchbar component */}
-                            <NavbarPage navbar={this.navbarCallback} />
+                            <NavbarPage parentCallback={this.handleCallback} />
                             <MDBRow className="ml-2 mr-2 mt-5">
                                 <MDBCol className="col-md-9 mt-4">
                                     <MDBCard  className="gradient-custom">
@@ -64,7 +63,7 @@ class App extends Component {
                                                 <MDBCol className="col-md-8">
                                                     <MDBRow>
                                                         {/* TODO: Need to add props to VideoDisplay component. 
-                                                                  Default porps are working:
+                                                                  Default props are working:
                                                                   yt_video_id, titile, description */}
                                                         <VideoDisplay />
                                                     </MDBRow>
@@ -72,8 +71,44 @@ class App extends Component {
                                                         <AddEditComment />
                                                     </MDBRow>
                                                 </MDBCol>
-                                                <CommentHistoryTable />
-                                                
+
+                                                <MDBCol className='col-md-4'>
+                                                    <MDBCard>
+                                                        <MDBCardBody>
+                                                        Comment History Table
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        <MDBCard className="mb-3">
+                                                            <MDBCardBody>
+                                                                Comment
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                        </MDBCardBody>
+                                                    </MDBCard>
+                                                </MDBCol>
                                             
                                             </MDBRow>
                                         </MDBCardBody>

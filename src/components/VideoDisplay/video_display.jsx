@@ -2,10 +2,12 @@ import React from 'react';
 import { MDBCard, 
     MDBCardBody,
 } from "mdbreact";
+import getVideoInfo from '../../Services/yt_axios'
 
 /* Functional component */
 
 const VideoDisplay = (props) => {
+    let videoData = getVideoInfo(props.yt_video_id)
     // Original yt_video_id: M7lc1UVf-VE
     return (
         <MDBCard className="col-md-12 mb-2">
@@ -19,7 +21,7 @@ const VideoDisplay = (props) => {
                         title="Video Display"
                         >
                 </iframe>
-                <p className="mt-3">{props.title}</p>
+                <p className="mt-3">{videoData.title}</p>
                 <p>{props.description}</p>
             </MDBCardBody>
         </MDBCard>

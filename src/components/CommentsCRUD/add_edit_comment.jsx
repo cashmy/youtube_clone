@@ -3,33 +3,39 @@ import LibraryServices from '../../Services/request';
 import {MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon} from 'mdbreact';
 import { Fragment } from 'react';
 
-const AddEditComment = (props) => {
+export default class AddEditComment extends Component {
 
-    const [state, setState] = useState({
+    state = {
         video: 3,
         id: null,
         comment_text: '',
         originalComment: null,
         like: null,
         dislike: null
-    })
+    }
 
-    const onChangeComment = e => {
-        setState({comment_text: e.target.value})
+    onChangeComment = e => {
+        this.setState({comment_text: e.target.value})
         console.log(this.state.comment_text)
     }
 
-    const updateComment = (e) => {
-        LibraryServices.update(state.id, state.comment_text)
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    }
+    // const saveComment = () => {
+    //     const data = {
+    //         comment: setCommentText,
+    //     };
 
-    const saveComment = (e) => {
+    //     LibraryServices.createComment(data)
+    //     .then(response => {
+    //         setCommentText(response.data.comment)
+    //         console.log(response)
+    //     })
+    //     .catch(error => {
+    //         console.log(error.response.data);
+    //     })
+    // }
+
+    saveComment = (e) => {
+        debugger
         const data = {
             video: this.state.video,
             id: this.state.id,
@@ -38,10 +44,9 @@ const AddEditComment = (props) => {
             like: this.state.like,
             dislike: this.state.dislike
         };
-        e.preventDefault();
         LibraryServices.createComment(data)
         .then(data => {
-            setState({
+            this.setState({
                 video: data.video,
                 id: data.id,
                 commentText: data.comment_text,
@@ -54,12 +59,10 @@ const AddEditComment = (props) => {
         .catch(error => {
             console.log(error.response);
         });
-
-        newComment()
     }
 
-    const newComment = () => {
-        setState({
+    newComment = () => {
+        this.setState({
             video: 3,
             id: null,
             comment_text: '',
@@ -69,10 +72,8 @@ const AddEditComment = (props) => {
         })
     }
 
+    render() {
         return (
-            <>
-            {props.update ? 
-            
             <MDBCard className="col-md-12 mb-2">
             <MDBCardBody>
                 Edit Comment
@@ -125,6 +126,5 @@ const AddEditComment = (props) => {
             </>
 
         );
+    }
 }
-
-export default AddEditComment
