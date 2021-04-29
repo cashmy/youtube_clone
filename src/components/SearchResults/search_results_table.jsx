@@ -10,6 +10,7 @@ import {
     MDBTableBody,
 } from "mdbreact";
 // import axios from 'axios'
+import './search_results_table.css'
 
 
 const SearchResultsTable = (props) => {
