@@ -4,7 +4,8 @@ import { MDBCard,
     MDBCardTitle,
     MDBCardText
 } from "mdbreact";
-import getVideoInfo from '../../Services/yt_axios'
+import getVideoInfo from '../../Services/yt_axios';
+import axios from 'axios'
 
 /* Functional component */
 

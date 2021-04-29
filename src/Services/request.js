@@ -21,10 +21,6 @@ class LibraryServices {
     return http.patch(`comments/${id}`)
     }
 
-    getVideoById = (yt_video_id) => {
-        return `https://www.youtube.com/embed/${yt_video_id}?autoplay=1&origin=http://example.com`
-    }
-
     // getVideos = () => {
     //     let videoData = {}
 

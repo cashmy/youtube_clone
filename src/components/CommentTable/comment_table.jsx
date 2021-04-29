@@ -11,7 +11,10 @@ export const CommentHistoryTable = (props) => {
 
     useEffect(() => {
         LibraryServices.getAll()
-        .then(response => setCommentData(response.data))
+        .then(response => 
+            setCommentData(response.data)
+            )
+        console.log('This is the commentData', commentData)
         
     }, [])
 

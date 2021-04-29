@@ -5,7 +5,10 @@ import { Fragment } from 'react';
 
 const AddEditComment = (props) => {
 
-    const [state, setState] = useState({
+
+
+
+    const [initialState, setInitialState] = useState({
         video: 3,
         id: null,
         comment_text: '',
@@ -15,51 +18,43 @@ const AddEditComment = (props) => {
     })
 
     const onChangeComment = e => {
-        setState({comment_text: e.target.value})
+        setInitialState({...initialState, comment_text: e.target.value})
+        console.log(initialState.comment_text)
+        
         
     }
 
-    const updateComment = (e) => {
-        LibraryServices.update(state.id, state.comment_text)
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    }
+    // const updateComment = (e) => {
+    //     LibraryServices.update(initialState.id, initialState.comment_text)
+    //     .then(response => {
+    //         console.log(response.data);
+    //     })
+    //     .catch(error => {
+    //         console.log(error)
+    //     })
+    // }
 
-    const saveComment = (e) => {
+    const saveComment = async(e) => {
         const data = {
-            video: state.video,
-            id: state.id,
-            comment_text: state.comment_text,
-            originalComment: state.originalComment,
-            like: state.like,
-            dislike: state.dislike
+            video: initialState.video,
+            id: initialState.id,
+            comment_text: initialState.comment_text,
+            originalComment: initialState.originalComment,
+            like: initialState.like,
+            dislike: initialState.dislike
         };
         e.preventDefault();
         LibraryServices.createComment(data)
-        .then(response => {
-            setState({
-                video: response.data.video,
-                id: response.data.id,
-                commentText: response.data.comment_text,
-                originalComment: response.data.originalComment,
-                like: response.data.like,
-                dislike: response.data.dislike
-            });
-            console.log(response.data);
+        setInitialState({
+            ...initialState,
+            comment_text: data.comment_text,
         })
-        .catch(error => {
-            console.log(error.response);
-        });
-
-        newComment()
+        console.log('initialState',initialState)
+        console.log(data)
     }
 
     const newComment = () => {
-        setState({
+        setInitialState({
             video: 3,
             id: null,
             comment_text: '',
@@ -83,13 +78,13 @@ const AddEditComment = (props) => {
                 id="comment_text" 
                 name="comment_text"
                 label={props.comment}
-                value={state.commentText}
+                value={initialState.commentText}
                 onChange={onChangeComment}>
                 </MDBInput>
                 <MDBBtn gradient="peach" onClick={newComment} >
                 Cancel
                 </MDBBtn>
-                <MDBBtn gradient="peach" onClick={updateComment} >
+                <MDBBtn gradient="peach" >
                 Update
                 </MDBBtn>
             </MDBCardBody>
@@ -106,7 +101,7 @@ const AddEditComment = (props) => {
             background  
             id="comment_text" 
             name="comment_text"
-            value={state.commentText}
+            value={initialState.commentText}
             onChange={onChangeComment}>
             </MDBInput>
             <Fragment>
