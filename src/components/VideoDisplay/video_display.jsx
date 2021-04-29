@@ -2,12 +2,24 @@ import React from 'react';
 import { MDBCard, 
     MDBCardBody,
 } from "mdbreact";
-import getVideoInfo from '../../Services/yt_axios'
+import getVideoInfo from '../../Services/yt_axios';
+import axios from 'axios'
 
 /* Functional component */
 
 const VideoDisplay = (props) => {
-    let videoData = getVideoInfo(props.yt_video_id)
+    let videoData = axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${props.yt_video_id}&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0`)
+    .then(response => {
+        console.log(response)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+    console.log('hello!!')
+    console.log('\n\n*** Services - outside ***')
+    console.log('Video Snippet :', videoData.data, '\n')
+    // videoData['title'] = videoData.data.items[0].snippet.title
+    // videoData['desription'] = videoData.data.items[0].snippet.description
     // Original yt_video_id: M7lc1UVf-VE
     return (
         <MDBCard className="col-md-12 mb-2">

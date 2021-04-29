@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const getVideoInfo = async (yt_video_id) => {
+    debugger
     const yt_httpClient = axios.create()
     yt_httpClient.defaults.timeout = 5000;
 
@@ -8,9 +9,9 @@ const getVideoInfo = async (yt_video_id) => {
     console.log('First Call')
 
     const response = await yt_httpClient.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+ yt_video_id +'&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0')
-    
+
     console.log('\n\n*** Services - outside ***')
-    console.log('Video Snipet :', response.data.items[0].snippet, '\n')
+    console.log('Video Snippet :', response.data.items[0].snippet, '\n')
     videoData['title'] = response.data.items[0].snippet.title
     videoData['desription'] = response.data.items[0].snippet.description
 
