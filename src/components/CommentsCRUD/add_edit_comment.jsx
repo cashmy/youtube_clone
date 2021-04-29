@@ -82,6 +82,7 @@ const AddEditComment = (props) => {
                 background  
                 id="comment_text" 
                 name="comment_text"
+                label={props.comment}
                 value={state.commentText}
                 onChange={onChangeComment}>
                 </MDBInput>

@@ -16,22 +16,22 @@ const SearchResultsTable = (props) => {
 
     useEffect(() => {
         // Temporarily deactivate YouTube API requests and using props data ...
-            // if (props.search_text === '' && props.related_yt_video_id !== '') {
-            //     // TODO: Replace with services call ??
-            //     axios.get('https://www.googleapis.com/youtube/v3/search?relatedToVideoId=' + props.related_yt_video_id +'&type=video&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0&maxResults=10')
-            //         .then(response => { 
-            //             console.log("Related - Response data: ", response.data.items)
-            //             setVideoData(response.data.items) 
-            //         })
-            //         .catch(error => {alert('There was an error! ' + error.message)})
-            // } else {
-            //     // TODO: Replace with services call ??
-            //     axios.get('https://www.googleapis.com/youtube/v3/search?q='+ props.search_text +'&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0&maxResults=10')
-            //         .then(response => {
-            //             console.log(">>> Search - Response data: ", response.data.items)
-            //              setVideoData(response.data.items) })
-            //         .catch(error => {alert('There was an error! ' + error.message)})
-            // }
+            if (props.search_text === '' && props.related_yt_video_id !== '') {
+                // TODO: Replace with services call ??
+                axios.get('https://www.googleapis.com/youtube/v3/search?relatedToVideoId=' + props.related_yt_video_id +'&type=video&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0&maxResults=10')
+                    .then(response => { 
+                        console.log("Related - Response data: ", response.data.items)
+                        setVideoData(response.data.items) 
+                    })
+                    .catch(error => {alert('There was an error! ' + error.message)})
+            } else {
+                // TODO: Replace with services call ??
+                axios.get('https://www.googleapis.com/youtube/v3/search?q='+ props.search_text +'&key=AIzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkN0&maxResults=10')
+                    .then(response => {
+                        console.log(">>> Search - Response data: ", response.data.items)
+                         setVideoData(response.data.items) })
+                    .catch(error => {alert('There was an error! ' + error.message)})
+            }
             setVideoData(props.items)
             return 
     }, [props.search_text, props.related_yt_video_id, props.items])
