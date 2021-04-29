@@ -40,10 +40,6 @@ class LibraryServices {
     //             .catch(error => {alert('There was an error! ' + error.message)})
     //     }
     //     return videoData
-    // }
-
-
-
+    // }   
 }
-
 export default new LibraryServices();
