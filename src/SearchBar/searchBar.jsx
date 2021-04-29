@@ -28,9 +28,6 @@ class SearchBar extends Component{
 
     render() {
 
-        console.log('SearchBar>searchText=',this.state.searchText)
-
-
         return (
             <MDBNavbarNav right>
                 <MDBFormInline className="md-form mr-auto m-0">

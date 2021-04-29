@@ -55,8 +55,6 @@ render() {
     />
   );
 
-  console.log('Navbar>searchText==', this.state.searchText)
-
   return (
     <Router>
       <div onClick={this.handleChange}>

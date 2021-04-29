@@ -46,11 +46,11 @@ const SearchResultsTable = (props) => {
 
     const mapVideoCards = () => {
 
-        console.log('\n*** Map Video Cards ***')
-        console.log('Props.search: ', props.search_text)
-        console.log('Props.related ID: ', props.related_yt_video_id )
-        console.log("\n\n *** Video Data: ", videoData)
-        console.log('typeof: ', typeof(videoData))
+        // console.log('\n*** Map Video Cards ***')
+        // console.log('Props.search: ', props.search_text)
+        // console.log('Props.related ID: ', props.related_yt_video_id )
+        // console.log("\n\n *** Video Data: ", videoData)
+        // console.log('typeof: ', typeof(videoData))
 
         // Cannot use "videoData.map" as it is an object (checked using typeof function)
         // So iterating over state variable and building my own array
@@ -182,7 +182,7 @@ const SearchResultsTable = (props) => {
         //     return video;
         // });
 
-         console.log('Video Map Results: ', videosMapResult)
+        //  console.log('Video Map Results: ', videosMapResult)
         return videosMapResult
     }
 
@@ -206,22 +206,22 @@ const SearchResultsTable = (props) => {
 SearchResultsTable.defaultProps = {
     search_text : '',
     related_yt_video_id: 'V65uAHzofbg',
-    videos: [{
-        yt_video_id: 'MArhfhV5Z8A'
-    },
-    {
-        yt_video_id: 'n7yvElqUUtQ'
-    },
-    {
-        yt_video_id: 'DgW14g0chfU'
-    },
-    {
-        yt_video_id: 'iC1K-G8m9PI'
-    },
-    {
-        yt_video_id: '5jEWNUQzrXY'
-    },
-    ],
+    // videos: [{
+    //     yt_video_id: 'MArhfhV5Z8A'
+    // },
+    // {
+    //     yt_video_id: 'n7yvElqUUtQ'
+    // },
+    // {
+    //     yt_video_id: 'DgW14g0chfU'
+    // },
+    // {
+    //     yt_video_id: 'iC1K-G8m9PI'
+    // },
+    // {
+    //     yt_video_id: '5jEWNUQzrXY'
+    // },
+    // ],
     items: [
         {
             "kind": "youtube#searchResult",
@@ -231,78 +231,78 @@ SearchResultsTable.defaultProps = {
                 "videoId": "MArhfhV5Z8A"
             }
         },
-        {
-            "kind": "youtube#searchResult",
-            "etag": "b1H8Bnr226C4zW2fqtRMwPJjPh0",
-            "id": {
-                "kind": "youtube#video",
-                "videoId": "n7yvElqUUtQ"
-            }
-        },
-        {
-            "kind": "youtube#searchResult",
-            "etag": "U9eKJUwEhOIS2M2H_3NBH5ns-sM",
-            "id": {
-                "kind": "youtube#video",
-                "videoId": "DgW14g0chfU"
-            }
-        },
-        {
-            "kind": "youtube#searchResult",
-            "etag": "-W_n0Ey78KhyOmyOdRNy3S1RnpM",
-            "id": {
-                "kind": "youtube#video",
-                "videoId": "iC1K-G8m9PI"
-            }
-        },
-        {
-            "kind": "youtube#searchResult",
-            "etag": "GxG4Bm8rH-Fe-19tumzlMZ4nRRg",
-            "id": {
-                "kind": "youtube#video",
-                "videoId": "5jEWNUQzrXY"
-            }
-        },
-        {
-            "kind": "youtube#searchResult",
-            "etag": "YAG-UiDGoxdwNfPvxAn05hV82fU",
-            "id": {
-                "kind": "youtube#video",
-                "videoId": "u4XXkujwPus"
-            }
-        },
-        {
-            "kind": "youtube#searchResult",
-            "etag": "DCN-1vaFZfULokPAMciHaFOzfoM",
-            "id": {
-                "kind": "youtube#video",
-                "videoId": "p597uPO1RYc"
-            }
-        },
-        {
-            "kind": "youtube#searchResult",
-            "etag": "dHfFIgUVPxLiURhvKclmE1WDw6g",
-            "id": {
-                "kind": "youtube#video",
-                "videoId": "fEGBbblR3YE"
-            }
-        },
-        {
-            "kind": "youtube#searchResult",
-            "etag": "n9Xm2UYGiuubaRVrOVOohQflJcI",
-            "id": {
-                "kind": "youtube#video",
-                "videoId": "5esSnoLjdqc"
-            }
-        },
-        {
-            "kind": "youtube#searchResult",
-            "etag": "Z87nbuWus2-oM1NXtEZ6oywU9GI",
-            "id": {
-                "kind": "youtube#video",
-                "videoId": "CVL1E1v-lF0"
-            }
-        }
+        // {
+        //     "kind": "youtube#searchResult",
+        //     "etag": "b1H8Bnr226C4zW2fqtRMwPJjPh0",
+        //     "id": {
+        //         "kind": "youtube#video",
+        //         "videoId": "n7yvElqUUtQ"
+        //     }
+        // },
+        // {
+        //     "kind": "youtube#searchResult",
+        //     "etag": "U9eKJUwEhOIS2M2H_3NBH5ns-sM",
+        //     "id": {
+        //         "kind": "youtube#video",
+        //         "videoId": "DgW14g0chfU"
+        //     }
+        // },
+        // {
+        //     "kind": "youtube#searchResult",
+        //     "etag": "-W_n0Ey78KhyOmyOdRNy3S1RnpM",
+        //     "id": {
+        //         "kind": "youtube#video",
+        //         "videoId": "iC1K-G8m9PI"
+        //     }
+        // },
+        // {
+        //     "kind": "youtube#searchResult",
+        //     "etag": "GxG4Bm8rH-Fe-19tumzlMZ4nRRg",
+        //     "id": {
+        //         "kind": "youtube#video",
+        //         "videoId": "5jEWNUQzrXY"
+        //     }
+        // },
+        // {
+        //     "kind": "youtube#searchResult",
+        //     "etag": "YAG-UiDGoxdwNfPvxAn05hV82fU",
+        //     "id": {
+        //         "kind": "youtube#video",
+        //         "videoId": "u4XXkujwPus"
+        //     }
+        // },
+        // {
+        //     "kind": "youtube#searchResult",
+        //     "etag": "DCN-1vaFZfULokPAMciHaFOzfoM",
+        //     "id": {
+        //         "kind": "youtube#video",
+        //         "videoId": "p597uPO1RYc"
+        //     }
+        // },
+        // {
+        //     "kind": "youtube#searchResult",
+        //     "etag": "dHfFIgUVPxLiURhvKclmE1WDw6g",
+        //     "id": {
+        //         "kind": "youtube#video",
+        //         "videoId": "fEGBbblR3YE"
+        //     }
+        // },
+        // {
+        //     "kind": "youtube#searchResult",
+        //     "etag": "n9Xm2UYGiuubaRVrOVOohQflJcI",
+        //     "id": {
+        //         "kind": "youtube#video",
+        //         "videoId": "5esSnoLjdqc"
+        //     }
+        // },
+        // {
+        //     "kind": "youtube#searchResult",
+        //     "etag": "Z87nbuWus2-oM1NXtEZ6oywU9GI",
+        //     "id": {
+        //         "kind": "youtube#video",
+        //         "videoId": "CVL1E1v-lF0"
+        //     }
+        // }
     ]
 }
 
