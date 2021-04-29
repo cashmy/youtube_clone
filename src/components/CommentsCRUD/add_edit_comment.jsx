@@ -9,7 +9,7 @@ const AddEditComment = (props) => {
 
 
     const [initialState, setInitialState] = useState({
-        video: 3,
+        video: 4,
         id: null,
         comment_text: '',
         originalComment: null,
@@ -19,22 +19,21 @@ const AddEditComment = (props) => {
 
     const onChangeComment = e => {
         setInitialState({...initialState, comment_text: e.target.value})
-        console.log(initialState.comment_text)
         
         
     }
 
-    // const updateComment = (e) => {
-    //     LibraryServices.update(initialState.id, initialState.comment_text)
-    //     .then(response => {
-    //         console.log(response.data);
-    //     })
-    //     .catch(error => {
-    //         console.log(error)
-    //     })
-    // }
+    const updateComment = (e) => {
+        LibraryServices.update(initialState.id, initialState.comment_text)
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
 
-    const saveComment = async(e) => {
+    const saveComment = (e) => {
         const data = {
             video: initialState.video,
             id: initialState.id,
@@ -43,19 +42,17 @@ const AddEditComment = (props) => {
             like: initialState.like,
             dislike: initialState.dislike
         };
-        e.preventDefault();
         LibraryServices.createComment(data)
         setInitialState({
             ...initialState,
             comment_text: data.comment_text,
         })
         console.log('initialState',initialState)
-        console.log(data)
     }
 
     const newComment = () => {
         setInitialState({
-            video: 3,
+            video: 4,
             id: null,
             comment_text: '',
             originalComment: null,
