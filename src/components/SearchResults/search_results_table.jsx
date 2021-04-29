@@ -9,7 +9,7 @@ import {
     MDBTable,
     MDBTableBody,
 } from "mdbreact";
-import axios from 'axios'
+// import axios from 'axios'
 
 
 const SearchResultsTable = (props) => {
@@ -54,8 +54,8 @@ const SearchResultsTable = (props) => {
         // Cannot use "videoData.map" as it is an object (checked using typeof function)
         // So iterating over state variable and building my own array
         let videosMapResult = []
-        let tempTitle = ''
-        let tempDescription = ''
+        // let tempTitle = ''
+        // let tempDescription = ''
         for (let i = 0; i < videoData.length; i++) {
 
 

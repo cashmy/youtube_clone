@@ -1,8 +1,8 @@
-import { MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBMask, MDBView } from 'mdbreact';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon } from 'mdbreact';
 import React, {useState, useEffect} from 'react';
 import LibraryServices from '../../Services/request';
 import ModalPage from '../CommentModal/Modal';
-import AddEditComment from '../CommentsCRUD/add_edit_comment';
+// import AddEditComment from '../CommentsCRUD/add_edit_comment';
 import './comment_table.css'
 
 export const CommentHistoryTable = (props) => {
@@ -21,7 +21,7 @@ export const CommentHistoryTable = (props) => {
     const handleLike = (comment) => {
         console.log('User liked song >', comment);
         //Add logic if button has already been pressed or accidentally liked
-        if (comment.like == 'true'){
+        if (comment.like === 'true'){
             setCommentData({
                 commentData
             })
