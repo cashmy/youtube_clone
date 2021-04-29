@@ -29,9 +29,9 @@ const VideoDisplay = (props) => {
         return tempVideoData
     }   
     // Async call to rtv data
-    useEffect(() => {
-        setVideoData(getVideoInfo(props.yt_video_id))
-    },[props.yt_video_id])
+    // useEffect(() => {
+    //     setVideoData(getVideoInfo(props.yt_video_id))
+    // },[props.yt_video_id])
 
     videoData = trialAsync()
     // Initial render 
