@@ -34,7 +34,7 @@ export const CommentHistoryTable = (props) => {
 
     const handleOnClick = (comment) => {
         console.log('Clicked Comment >>', comment)
-        //Todo update props to AddEditComment component
+        //Todo update props to AddEditComment componen
         
 
     }
@@ -114,16 +114,4 @@ export const CommentHistoryTable = (props) => {
             </MDBCard>
         </MDBCol>
     )
-
 }
-
-
-const mapStateToProps = (state) => ({
-    
-})
-
-const mapDispatchToProps = {
-    
-}
-
-
