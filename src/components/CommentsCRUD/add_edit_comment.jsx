@@ -16,7 +16,7 @@ const AddEditComment = (props) => {
 
     const onChangeComment = e => {
         setState({comment_text: e.target.value})
-        console.log(this.state.comment_text)
+        
     }
 
     const updateComment = (e) => {
@@ -31,25 +31,25 @@ const AddEditComment = (props) => {
 
     const saveComment = (e) => {
         const data = {
-            video: this.state.video,
-            id: this.state.id,
-            comment_text: this.state.comment_text,
-            originalComment: this.state.originalComment,
-            like: this.state.like,
-            dislike: this.state.dislike
+            video: state.video,
+            id: state.id,
+            comment_text: state.comment_text,
+            originalComment: state.originalComment,
+            like: state.like,
+            dislike: state.dislike
         };
         e.preventDefault();
         LibraryServices.createComment(data)
-        .then(data => {
+        .then(response => {
             setState({
-                video: data.video,
-                id: data.id,
-                commentText: data.comment_text,
-                originalComment: data.originalComment,
-                like: data.like,
-                dislike: data.dislike
+                video: response.data.video,
+                id: response.data.id,
+                commentText: response.data.comment_text,
+                originalComment: response.data.originalComment,
+                like: response.data.like,
+                dislike: response.data.dislike
             });
-            console.log(data);
+            console.log(response.data);
         })
         .catch(error => {
             console.log(error.response);
