@@ -6,7 +6,6 @@ import { MDBView,
     MDBRow,
     MDBCol,
     MDBCardBody,
-    MDBInput
 } from "mdbreact";
 import Navbar from './Navbar/navbar';
 import Footer from './Footer/footer';

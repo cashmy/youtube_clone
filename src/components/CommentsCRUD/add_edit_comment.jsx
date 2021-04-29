@@ -1,6 +1,6 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import LibraryServices from '../../Services/request';
-import {MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon} from 'mdbreact';
+import {MDBCard, MDBCardBody, MDBInput, MDBBtn} from 'mdbreact';
 import { Fragment } from 'react';
 
 const AddEditComment = (props) => {

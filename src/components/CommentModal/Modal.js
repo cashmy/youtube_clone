@@ -21,7 +21,7 @@ render() {
         <MDBModal isOpen={this.state.modal12} toggle={this.toggle(12)} backdrop={false}>
             <MDBModalHeader className='modal_header' toggle={this.toggle(12)}>{this.props.title}</MDBModalHeader>
             <MDBModalBody>
-            {this.props.type == 'Edit' ? 
+            {this.props.type === 'Edit' ? 
             <MDBInput type={this.props.inputType} value={this.props.content}  />
             :
             this.props.content
