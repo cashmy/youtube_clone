@@ -1,4 +1,4 @@
-import { MDBCard, MDBCardBody, MDBCol, MDBBtn } from 'mdbreact';
+import { MDBCard, MDBCardBody, MDBCol, MDBMask, MDBView } from 'mdbreact';
 import React, {useState, useEffect} from 'react';
 import LibraryServices from '../../Services/request';
 import ModalPage from '../CommentModal/Modal';
@@ -20,40 +20,45 @@ export const CommentHistoryTable = (props) => {
 
     const handleOnClick = (comment) => {
         console.log('Clicked Comment >>', comment)
+        //Todo update props to AddEditComment component
     }
 
     
     return (
         <MDBCol className='col-md-4'>
             <MDBCard>
+                
                 <MDBCardBody>
-                {commentData ? commentData.map(comment => {
-                    return  <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} >
 
-                                <MDBCardBody {... comment}>
-                                    {comment.comment_text}
-                                </MDBCardBody>
-                                <div className='buttons' style={{display: 'flex', flexDirection:'row'}}>
-                                <ModalPage
-                                color='mdb-color'
-                                type='Edit'
-                                inputType='textarea'
-                                title='Edit Comment'
-                                content={comment.comment_text}
-                                closeBtn='Cancel'
-                                actionBtn='Save Changes'
-                                />
-                                <ModalPage
-                                color='danger'
-                                type='Delete'
-                                title='Delete Comment'
-                                inputType = 'text'
-                                content='Are you sure you want to delete the comment?'
-                                closeBtn='No'
-                                actionBtn='Yes'
-                                />
-                                </div>
-                            </MDBCard>
+                {commentData ? commentData.map(comment => {
+                    return <>
+                    <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} >
+                        #{comment.id}
+                        <MDBCardBody {... comment}>
+                            {comment.comment_text}
+                        </MDBCardBody>
+                        <div className='buttons' style={{display: 'flex', flexDirection:'row'}}>
+                        <ModalPage
+                        color='mdb-color'
+                        type='Edit'
+                        inputType='textarea'
+                        title='Edit Comment'
+                        content={comment.comment_text}
+                        closeBtn='Cancel'
+                        actionBtn='Save Changes'
+                        />
+                        <ModalPage
+                        color='danger'
+                        type='Delete'
+                        title='Delete Comment'
+                        inputType = 'text'
+                        content='Are you sure you want to delete the comment?'
+                        closeBtn='No'
+                        actionBtn='Yes'
+                        />
+                        </div>
+                    </MDBCard>
+                    </>
                 }) : 
                 
                 <MDBCard className="mb-3">

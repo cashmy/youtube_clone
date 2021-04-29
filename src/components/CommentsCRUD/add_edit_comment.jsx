@@ -71,7 +71,7 @@ const AddEditComment = (props) => {
 
         return (
             <>
-            {!props.update ? 
+            {props.update ? 
             
             <MDBCard className="col-md-12 mb-2">
             <MDBCardBody>
