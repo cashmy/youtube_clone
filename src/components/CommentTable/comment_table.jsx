@@ -20,15 +20,13 @@ export const CommentHistoryTable = (props) => {
 
     const handleLike = (comment) => {
         console.log('User liked song >', comment);
+        
         //Add logic if button has already been pressed or accidentally liked
-        if (comment.like === 'true'){
-            setCommentData({
-                commentData
-            })
-        }
-        else {
-            comment.like = 'true'
-        }
+        
+
+        let edit = comment['like']=true
+        LibraryServices.likeComment(comment.id, edit)
+        
 
     }
 
@@ -47,11 +45,9 @@ export const CommentHistoryTable = (props) => {
             <MDBCard>
                 
                 <MDBCardBody>
-
                 {commentData ? commentData.map(comment => {
                     return <>
                     <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} >
-                        #{comment.id}
                         <MDBCardBody {... comment}>
                             {comment.comment_text}
                         </MDBCardBody>
