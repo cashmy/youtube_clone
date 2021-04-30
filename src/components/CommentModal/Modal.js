@@ -21,15 +21,15 @@ render() {
         <MDBModal isOpen={this.state.modal12} toggle={this.toggle(12)} backdrop={false}>
             <MDBModalHeader className='modal_header' toggle={this.toggle(12)}>{this.props.title}</MDBModalHeader>
             <MDBModalBody>
-            {this.props.type === 'Edit' ? 
-            <MDBInput type={this.props.inputType} value={this.props.content}  />
+            {this.props.type === 'Reply' ? 
+            <MDBInput onChange={this.props.change} type="textarea" value={this.props.content} background />
             :
             this.props.content
             }
             </MDBModalBody>
             <MDBModalFooter>
-            <MDBBtn color="secondary" onClick={this.toggle(12)}>{this.props.closeBtn}</MDBBtn>
-            <MDBBtn color="primary">{this.props.actionBtn}</MDBBtn>
+            <MDBBtn color="secondary" size='md' onClick={this.toggle(12)}>{this.props.closeBtn}</MDBBtn>
+            <MDBBtn size='md' color="primary" onClick={this.props.click}>{this.props.actionBtn}</MDBBtn>
             </MDBModalFooter>
         </MDBModal>
         </MDBContainer>

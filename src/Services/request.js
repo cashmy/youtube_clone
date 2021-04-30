@@ -17,8 +17,8 @@ class LibraryServices {
     return http.delete(`comments/${id}`)
     }
 
-    likeSong = (id) => {
-    return http.patch(`comments/${id}`)
+    editComment = (id, data) => {
+    return http.put(`comments/${id}`, data)
     }
 
     // getVideos = () => {

@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import LibraryServices from '../../Services/request';
 import {MDBCard, MDBCardBody, MDBInput, MDBBtn} from 'mdbreact';
 import { Fragment } from 'react';
 
 const AddEditComment = (props) => {
 
-
-
-
     const [initialState, setInitialState] = useState({
-        video: 4,
+        video: 'V65uAHzofbg',
         id: null,
         comment_text: '',
         originalComment: null,
@@ -17,10 +14,12 @@ const AddEditComment = (props) => {
         dislike: null
     })
 
+    useEffect(() => {
+    }, [])
+
+
     const onChangeComment = e => {
-        setInitialState({...initialState, comment_text: e.target.value})
-        
-        
+        setInitialState({ ...initialState, comment_text: e.target.value})
     }
 
     const updateComment = (e) => {
@@ -29,11 +28,11 @@ const AddEditComment = (props) => {
             console.log(response.data);
         })
         .catch(error => {
-            console.log(error)
+            console.log(error.response)
         })
     }
 
-    const saveComment = (e) => {
+    const saveComment = () => {
         const data = {
             video: initialState.video,
             id: initialState.id,
@@ -48,11 +47,13 @@ const AddEditComment = (props) => {
             comment_text: data.comment_text,
         })
         console.log('initialState',initialState)
+
+        clearForm()
     }
 
-    const newComment = () => {
+    function clearForm(){
         setInitialState({
-            video: 4,
+            video: 'V65uAHzofbg',
             id: null,
             comment_text: '',
             originalComment: null,
@@ -74,11 +75,10 @@ const AddEditComment = (props) => {
                 background  
                 id="comment_text" 
                 name="comment_text"
-                label={props.comment}
-                value={initialState.commentText}
+                value={initialState.comment_text}
                 onChange={onChangeComment}>
                 </MDBInput>
-                <MDBBtn gradient="peach" onClick={newComment} >
+                <MDBBtn gradient="peach" onClick={() => clearForm} >
                 Cancel
                 </MDBBtn>
                 <MDBBtn gradient="peach" >
@@ -92,23 +92,23 @@ const AddEditComment = (props) => {
         <MDBCard className="col-md-12 mb-2">
         <MDBCardBody>
             Post Comment
+            <form>
             <MDBInput
             htmlFor="comment_text"
             type="textarea"
             background  
             id="comment_text" 
             name="comment_text"
-            value={initialState.commentText}
+            value={initialState.comment_text}
             onChange={onChangeComment}>
             </MDBInput>
-            <Fragment>
-            <MDBBtn gradient="peach" onClick={newComment} >
-            Cancel
+            <MDBBtn gradient="peach" onClick={clearForm} type='reset' >
+                Cancel
             </MDBBtn>
             <MDBBtn gradient="peach" onClick={saveComment} >
             Comment
             </MDBBtn>
-            </Fragment>
+            </form>
         </MDBCardBody>
         </MDBCard>
         
