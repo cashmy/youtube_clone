@@ -27,7 +27,12 @@ As the components are developed and integrated, this structure will be dramatica
 class App extends Component {
 
     state = {
-        searchText: ''
+        searchText: '',
+        selectedVideoId: '',
+    }
+
+    handleSearchResultsCallback = (video_id) => {
+        this.setState({ selectedVideoId : video_id})
     }
 
     handleCallback = (childData) => {
@@ -64,7 +69,7 @@ class App extends Component {
                                                         {/* TODO: Need to add props to VideoDisplay component. 
                                                                   Default props are working:
                                                                   yt_video_id, titile, description */}
-                                                        <VideoDisplay />
+                                                        <VideoDisplay yt_video_id={this.state.selectedVideoId || 'V65uAHzofbg'} />
                                                     </MDBRow>
                                                     <MDBRow>
                                                         <AddEditComment />
@@ -80,7 +85,8 @@ class App extends Component {
                                 {/* TODO: Need to add props to SearchResutlsTable component. 
                                             Default porps are:
                                             search_text, related_yt_video_id */}
-                                <SearchResultsTable search_text={this.state.searchText} />
+                                <SearchResultsTable search_text={this.state.searchText}
+                                                    parentCallback={this.handleSearchResultsCallback} />
 
                             </MDBRow>
                         </MDBContainer>

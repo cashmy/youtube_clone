@@ -15,34 +15,27 @@ class VideoDisplay extends Component {
             title: '',
             description: ''
         }
-    }
-    static defaultProps = {
-        yt_video_id : 'V65uAHzofbg',
-        title: 'PROPS: Skills You Will Learn at devCodeCamp',
-        description: "PROPS: It's more than just learning to code. Our Director of Instruction talks more about the skills you will learn to set you up for success as a Software Developer."    
+        this.getVideoInfoToState = this.getVideoInfoToState.bind(this)
     }
     
     getVideoInfoToState = async () => {
-        console.log('Accessing info ...')
         let videoData = await getVideoInfo(this.props.yt_video_id)
-        console.log('After await ...', videoData)
-        console.log('>>',videoData['title'])
         this.setState({
             id: this.props.yt_video_id,
             title: videoData.title,
             description: videoData.description,
         })
-        console.log('Set state happened: ', this.state)
         return
     }
     
     componentDidMount() {
-        if (this.props.yt_video_id !== this.state.id) {
+            this.getVideoInfoToState()
+    }
 
-            let videoData = getVideoInfo(this.props.yt_video_id)
-            console.log('videoData: ', videoData)
-            // this.getVideoInfoToState()
-        }
+    componentDidUpdate(nextProps, prevProps){
+        if (this.props.yt_video_id !== this.state.id ) {
+            this.getVideoInfoToState()
+      }
     }
 
     render() {
@@ -59,11 +52,11 @@ class VideoDisplay extends Component {
                             >
                     </MDBIframe>
                     <MDBCardTitle className="mt-2">
-                         {this.props.title}
+                         {this.state.title}
                     </MDBCardTitle>
                     <MDBCardText>
                         This is the description
-                        {this.state.videoDescription}
+                        {this.state.description}
                     </MDBCardText>
                 </MDBCardBody>
             </MDBCard>
