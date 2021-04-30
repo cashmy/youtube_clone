@@ -1,27 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import LibraryServices from '../../Services/request';
 import {MDBCard, MDBCardBody, MDBInput, MDBBtn} from 'mdbreact';
 import { Fragment } from 'react';
 
 const AddEditComment = (props) => {
 
-
-
-
     const [initialState, setInitialState] = useState({
-        video_id: 'V65uAHzofbg',
+        video: 'V65uAHzofbg',
         id: null,
         comment_text: '',
         originalComment: null,
         like: null,
         dislike: null
     })
-    const [inputText, setInputText] = useState({
-        inputText: ''
-    })
+
+    useEffect(() => {
+    }, [])
+
 
     const onChangeComment = e => {
-        setInputText({ inputText: e.target.value})
+        setInitialState({ ...initialState, comment_text: e.target.value})
     }
 
     const updateComment = (e) => {
@@ -30,15 +28,15 @@ const AddEditComment = (props) => {
             console.log(response.data);
         })
         .catch(error => {
-            console.log(error)
+            console.log(error.response)
         })
     }
 
-    const saveComment = (e) => {
+    const saveComment = () => {
         const data = {
-            video_id: initialState.video,
+            video: initialState.video,
             id: initialState.id,
-            comment_text: inputText.inputText,
+            comment_text: initialState.comment_text,
             originalComment: initialState.originalComment,
             like: initialState.like,
             dislike: initialState.dislike
@@ -49,22 +47,18 @@ const AddEditComment = (props) => {
             comment_text: data.comment_text,
         })
         console.log('initialState',initialState)
+
+        clearForm()
     }
 
-    const newComment = () => {
+    function clearForm(){
         setInitialState({
-            video_id: 'V65uAHzofbg',
+            video: 'V65uAHzofbg',
             id: null,
             comment_text: '',
             originalComment: null,
             like: null,
             dislike: null
-        })
-    }
-
-    function clearForm(){
-        setInputText({
-            inputText: ''
         })
     }
 
@@ -81,7 +75,7 @@ const AddEditComment = (props) => {
                 background  
                 id="comment_text" 
                 name="comment_text"
-                value={inputText.inputText}
+                value={initialState.comment_text}
                 onChange={onChangeComment}>
                 </MDBInput>
                 <MDBBtn gradient="peach" onClick={() => clearForm} >
@@ -105,7 +99,7 @@ const AddEditComment = (props) => {
             background  
             id="comment_text" 
             name="comment_text"
-            value={inputText.inputText}
+            value={initialState.comment_text}
             onChange={onChangeComment}>
             </MDBInput>
             <MDBBtn gradient="peach" onClick={clearForm} type='reset' >
