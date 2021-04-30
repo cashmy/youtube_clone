@@ -39,10 +39,12 @@ const SearchResultsTable = (props) => {
     }, [props.search_text, props.related_yt_video_id, props.items])
 
 
-    const handleOnClick = (video) => {
-        console.log("I have been clicked: ", video)
+    const handleOnClick = (video_id, props) => {
+        console.log("I have been clicked: ", video_id)
         console.log(props.search_text)
+        console.log("All Props: ", props)
         // TODO: update props info to VideoPlayer component
+        props.parentCallback(video_id)
     }
 
     const mapVideoCards = () => {
@@ -104,7 +106,7 @@ const SearchResultsTable = (props) => {
 
             let card = 
                 <MDBCard className="mb-3"
-                         onDoubleClick={() => handleOnClick(videoData[i].id.videoId)}
+                         onClick={() => handleOnClick(videoData[i].id.videoId, props)}
                          style={{ cursor: 'pointer' }}
                 >
                     <MDBRow className="g-0">
@@ -187,7 +189,7 @@ const SearchResultsTable = (props) => {
     return (
         <MDBCol className="col-md-3 mt-4">
             <MDBCard>
-                <MDBTable scrollY borderless maxHeight='1200px'>
+                <MDBTable scrolly borderless maxHeight='1200px'>
                     <MDBTableBody rows={data.rows} />
                 </MDBTable>
             </MDBCard>
