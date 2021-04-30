@@ -22,7 +22,7 @@ render() {
             <MDBModalHeader className='modal_header' toggle={this.toggle(12)}>{this.props.title}</MDBModalHeader>
             <MDBModalBody>
             {this.props.type === 'Reply' ? 
-            <MDBInput onChange={this.props.change} type="textarea" value={this.props.content} background />
+            <MDBInput onChange={this.props.change} type="textarea" value={this.props.value} background />
             :
             this.props.content
             }

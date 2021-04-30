@@ -13,12 +13,16 @@ class LibraryServices {
     return http.post('/comments', data);
     };
 
-    remove = id => {
+    removeComment = id => {
     return http.delete(`comments/${id}`)
     }
 
     editComment = (id, data) => {
     return http.put(`comments/${id}`, data)
+    }
+
+    getVideoById = (id) => {
+        return http.get(`youtube_clone/${id}`)
     }
 
     // getVideos = () => {

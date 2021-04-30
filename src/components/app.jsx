@@ -72,10 +72,10 @@ class App extends Component {
                                                         <VideoDisplay yt_video_id={this.state.selectedVideoId || 'V65uAHzofbg'} />
                                                     </MDBRow>
                                                     <MDBRow>
-                                                        <AddEditComment />
+                                                        <AddEditComment yt_video_id={this.state.selectedVideoId || 'V65uAHzofbg'} />
                                                     </MDBRow>
                                                 </MDBCol>
-                                                <CommentHistoryTable />
+                                                <CommentHistoryTable yt_video_id={this.state.selectedVideoId || 'V65uAHzofbg'}/>
                                             
                                             </MDBRow>
                                         </MDBCardBody>

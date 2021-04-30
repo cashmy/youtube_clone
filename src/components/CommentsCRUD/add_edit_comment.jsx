@@ -6,12 +6,12 @@ import { Fragment } from 'react';
 const AddEditComment = (props) => {
 
     const [initialState, setInitialState] = useState({
-        video: 'V65uAHzofbg',
+        video: props.yt_video_id,
         id: null,
         comment_text: '',
         originalComment: null,
-        like: null,
-        dislike: null
+        like: false,
+        dislike: false
     })
 
     useEffect(() => {
@@ -34,7 +34,7 @@ const AddEditComment = (props) => {
 
     const saveComment = () => {
         const data = {
-            video: initialState.video,
+            video: props.yt_video_id,
             id: initialState.id,
             comment_text: initialState.comment_text,
             originalComment: initialState.originalComment,
@@ -53,12 +53,12 @@ const AddEditComment = (props) => {
 
     function clearForm(){
         setInitialState({
-            video: 'V65uAHzofbg',
+            video: props.yt_video_id,
             id: null,
             comment_text: '',
             originalComment: null,
-            like: null,
-            dislike: null
+            like: false,
+            dislike: false
         })
     }
 
