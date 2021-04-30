@@ -15,21 +15,12 @@ const AddEditComment = (props) => {
     })
 
     useEffect(() => {
-    }, [])
+        setInitialState(initialState)
+    }, [initialState])
 
 
     const onChangeComment = e => {
         setInitialState({ ...initialState, comment_text: e.target.value})
-    }
-
-    const updateComment = (e) => {
-        LibraryServices.update(initialState.id, initialState.comment_text)
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.log(error.response)
-        })
     }
 
     const saveComment = () => {

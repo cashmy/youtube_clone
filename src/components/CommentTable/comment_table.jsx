@@ -1,9 +1,7 @@
 import { MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBTable, MDBTableBody } from 'mdbreact';
 import React, {useState, useEffect} from 'react';
-import { combineReducers } from 'redux';
 import LibraryServices from '../../Services/request';
 import ModalPage from '../CommentModal/Modal';
-// import AddEditComment from '../CommentsCRUD/add_edit_comment';
 import './comment_table.css'
 
 export const CommentHistoryTable = (props) => {
@@ -29,10 +27,14 @@ export const CommentHistoryTable = (props) => {
             setCommentData(response.data)
             )
         
-    }, [])
+        setReplyComment(replyComment)
+        setCommentData(commentData)
+        
+    }, [replyComment, commentData])
 
     const handleOnChangeReply = (e) => {
         setReplyComment({ ...replyComment, comment_text: e.target.value})
+
     }
 
     const handleLike = (comment) => {
@@ -113,19 +115,17 @@ export const CommentHistoryTable = (props) => {
         console.log('Clicked Comment >>', comment)
     }
 
-    const sortArr = () => {
-    }
-
     
     return (
         <MDBCol className='col-md-4'>
-            <MDBCard>
+            <div className='comment_container'>
+            <MDBCard border='white' >
                 <MDBCardBody>
                 {commentData ? commentData.map((comment, i) => {
 
                     if(!comment.original_comment){
                     return (
-                    <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} >
+                    <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} border='white' >
                         {comment.id}
                         {!comment.original_comment ? 
                             <MDBCardBody>
@@ -136,7 +136,7 @@ export const CommentHistoryTable = (props) => {
 
                         }
 
-                        <div className='buttons' style={{display: 'flex', flexDirection:'row'}}>
+                        <div id='buttons'>
 
                         {/* Reply Comment Modal */}
                         <ModalPage
@@ -145,10 +145,10 @@ export const CommentHistoryTable = (props) => {
                         click={() => createReply(comment)}
                         change={handleOnChangeReply}
                         value={replyComment.comment_text}
-                        title={`Replying to >> ${comment.comment_text}`}
+                        title={`Replying to ${comment.comment_text}`}
                         content=''
                         closeBtn='Cancel'
-                        actionBtn='Save Changes'
+                        actionBtn='Reply'
                         />
 
                         {/* Delete Comment Modal */}
@@ -195,13 +195,13 @@ export const CommentHistoryTable = (props) => {
                 }
                 if (comment.original_comment){
                     return (
-                        <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} >
-                            Reply &#8658; #{comment.original_comment}
+                        <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} border='white' >
+                            <span>Reply &#8658; #{comment.original_comment}</span>
                                 <MDBCardBody>
                                     {comment.comment_text}
                                 </MDBCardBody>
     
-                            <div className='buttons' style={{display: 'flex', flexDirection:'row'}}>
+                            <div id='buttons'>
     
                             {/* Delete Comment Modal */}
                             <ModalPage
@@ -266,6 +266,7 @@ export const CommentHistoryTable = (props) => {
                 }
                 </MDBCardBody>
             </MDBCard>
+            </div>
         </MDBCol>
     )
 }
