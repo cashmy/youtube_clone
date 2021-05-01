@@ -16,6 +16,7 @@ class VideoDisplay extends Component {
             description: ''
         }
         this.getVideoInfoToState = this.getVideoInfoToState.bind(this)
+        this.reduceText = this.reduceText.bind(this)
     }
     
     getVideoInfoToState = async () => {
@@ -38,6 +39,17 @@ class VideoDisplay extends Component {
       }
     }
 
+    reduceText(text) {
+        if (text.length > 250) {
+            let tempText = text.substr(0,249)
+            tempText = tempText + ' ...'
+            console.log("Reducted Text: ", tempText)
+            return tempText 
+        } else {
+            return text
+        }
+    }
+
     render() {
         return (
             <MDBCard className="col-md-12 mb-2">
@@ -55,8 +67,7 @@ class VideoDisplay extends Component {
                          {this.state.title}
                     </MDBCardTitle>
                     <MDBCardText>
-                        This is the description
-                        {this.state.description}
+                        {this.reduceText(this.state.description)}
                     </MDBCardText>
                 </MDBCardBody>
             </MDBCard>

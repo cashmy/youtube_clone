@@ -29,10 +29,13 @@ class App extends Component {
     state = {
         searchText: '',
         selectedVideoId: '',
+        related_yt_video_id: ''
     }
 
+    // Callback handler for SearchResultTable Child component
     handleSearchResultsCallback = (video_id) => {
         this.setState({ selectedVideoId : video_id})
+        this.setState({ related_yt_video_id : video_id})
     }
 
     handleCallback = (childData) => {
@@ -61,20 +64,18 @@ class App extends Component {
                             <NavbarPage parentCallback={this.handleCallback} />
                             <MDBRow className="ml-2 mr-2 mt-5">
                                 <MDBCol className="col-md-9 mt-4">
-                                    <MDBCard  className="gradient-custom">
+                                    <MDBCard  >
                                         <MDBCardBody>
                                             <MDBRow className="ml-2">
                                                 <MDBCol className="col-md-8">
                                                     <MDBRow>
-                                                        {/* TODO: Need to add props to VideoDisplay component. 
-                                                                  Default props are working:
-                                                                  yt_video_id, titile, description */}
                                                         <VideoDisplay yt_video_id={this.state.selectedVideoId || 'V65uAHzofbg'} />
                                                     </MDBRow>
                                                     <MDBRow>
                                                         <AddEditComment yt_video_id={this.state.selectedVideoId || 'V65uAHzofbg'} />
                                                     </MDBRow>
                                                 </MDBCol>
+                                                
                                                 <CommentHistoryTable yt_video_id={this.state.selectedVideoId || 'V65uAHzofbg'}/>
                                             
                                             </MDBRow>
@@ -82,10 +83,8 @@ class App extends Component {
                                     </MDBCard>
                                 </MDBCol>
 
-                                {/* TODO: Need to add props to SearchResutlsTable component. 
-                                            Default porps are:
-                                            search_text, related_yt_video_id */}
                                 <SearchResultsTable search_text={this.state.searchText}
+                                                    related_yt_video_id={this.state.related_yt_video_id || 'V65uAHzofbg'}
                                                     parentCallback={this.handleSearchResultsCallback} />
 
                             </MDBRow>
