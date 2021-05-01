@@ -21,7 +21,16 @@ class SearchBar extends Component{
             searchText: this.state.inputValue
         })
         e.preventDefault();
+
+        this.clearInput()
         
+    }
+
+    clearInput =() => {
+        this.setState({
+            searchText: '',
+            inputValue: ''
+        })
     }
 
 
