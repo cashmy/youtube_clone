@@ -1,6 +1,12 @@
-import { MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBTable, MDBTableBody } from 'mdbreact';
+import { 
+    MDBBtn, 
+    MDBCard, 
+    MDBCardBody, 
+    MDBCol, 
+    MDBIcon, 
+} from 'mdbreact';
 import React, {useState, useEffect} from 'react';
-import { combineReducers } from 'redux';
+// import { combineReducers } from 'redux';
 import LibraryServices from '../../Services/request';
 import ModalPage from '../CommentModal/Modal';
 // import AddEditComment from '../CommentsCRUD/add_edit_comment';
@@ -137,58 +143,50 @@ export const CommentHistoryTable = (props) => {
                         }
 
                         <div className='buttons' style={{display: 'flex', flexDirection:'row'}}>
+                            {/* Reply Comment Modal */}
+                            <ModalPage
+                                color='mdb-color'
+                                type='Reply'
+                                click={() => createReply(comment)}
+                                change={handleOnChangeReply}
+                                value={replyComment.comment_text}
+                                title={`Replying to >> ${comment.comment_text}`}
+                                content=''
+                                closeBtn='Cancel'
+                                actionBtn='Save Changes'
+                            />
 
-                        {/* Reply Comment Modal */}
-                        <ModalPage
-                        color='mdb-color'
-                        type='Reply'
-                        click={() => createReply(comment)}
-                        change={handleOnChangeReply}
-                        value={replyComment.comment_text}
-                        title={`Replying to >> ${comment.comment_text}`}
-                        content=''
-                        closeBtn='Cancel'
-                        actionBtn='Save Changes'
-                        />
-
-                        {/* Delete Comment Modal */}
-                        <ModalPage
-                        color='danger'
-                        type='Delete'
-                        title='Delete Comment'
-                        inputType = 'text'
-                        content='Are you sure you want to delete the comment?'
-                        closeBtn='No'
-                        actionBtn='Yes'
-                        click={()=>deleteComment(comment)}
-                        style={{display:'flex'}}
-                        />
-                        {/* Only will disable on refresh -- Need to fix */}
-                        {comment.like ?
-                        
-                        <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)} disabled >
-                        <MDBIcon size='lg' icon='thumbs-up' disabled />
-                        </MDBBtn>
-                        :
-                        
-                        <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)}  >
-                        <MDBIcon size='lg' icon='thumbs-up' />
-                        </MDBBtn>
-                        }
-
-                        {comment.dislike ?
-                        
-                        <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)} disabled >
-                        <MDBIcon size='lg' icon='thumbs-down' disabled />
-                        </MDBBtn>
-                        :
-                        
-                        <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)}  >
-                        <MDBIcon size='lg' icon='thumbs-down' />
-                        </MDBBtn>
-                        }
-
-
+                            {/* Delete Comment Modal */}
+                            <ModalPage
+                                color='danger'
+                                type='Delete'
+                                title='Delete Comment'
+                                inputType = 'text'
+                                content='Are you sure you want to delete the comment?'
+                                closeBtn='No'
+                                actionBtn='Yes'
+                                click={()=>deleteComment(comment)}
+                                style={{display:'flex'}}
+                            />
+                            {/* Only will disable on refresh -- Need to fix */}
+                            {comment.like ?
+                                    <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)} disabled >
+                                        <MDBIcon size='lg' icon='thumbs-up' disabled />
+                                    </MDBBtn>
+                                :
+                                    <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)}  >
+                                        <MDBIcon size='lg' icon='thumbs-up' />
+                                    </MDBBtn>
+                            }
+                            {comment.dislike ?
+                                    <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)} disabled >
+                                        <MDBIcon size='lg' icon='thumbs-down' disabled />
+                                    </MDBBtn>
+                                :
+                                    <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)}  >
+                                        <MDBIcon size='lg' icon='thumbs-down' />
+                                    </MDBBtn>
+                            }
                         </div>
                     </MDBCard>
                     )
@@ -203,44 +201,42 @@ export const CommentHistoryTable = (props) => {
     
                             <div className='buttons' style={{display: 'flex', flexDirection:'row'}}>
     
-                            {/* Delete Comment Modal */}
-                            <ModalPage
-                            color='danger'
-                            type='Delete'
-                            title='Delete Comment'
-                            inputType = 'text'
-                            content='Are you sure you want to delete the comment?'
-                            closeBtn='No'
-                            actionBtn='Yes'
-                            click={()=>deleteComment(comment)}
-                            style={{display:'flex'}}
-                            />
-                            {/* Only will disable on refresh -- Need to fix */}
-                            {comment.like ?
-                            
-                            <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)} disabled >
-                            <MDBIcon size='lg' icon='thumbs-up' disabled />
-                            </MDBBtn>
-                            :
-                            
-                            <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)}  >
-                            <MDBIcon size='lg' icon='thumbs-up' />
-                            </MDBBtn>
-                            }
-    
-                            {comment.dislike ?
-                            
-                            <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)} disabled >
-                            <MDBIcon size='lg' icon='thumbs-down' disabled />
-                            </MDBBtn>
-                            :
-                            
-                            <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)}  >
-                            <MDBIcon size='lg' icon='thumbs-down' />
-                            </MDBBtn>
-                            }
-    
-    
+                                {/* Delete Comment Modal */}
+                                <ModalPage
+                                    color='danger'
+                                    type='Delete'
+                                    title='Delete Comment'
+                                    inputType = 'text'
+                                    content='Are you sure you want to delete the comment?'
+                                    closeBtn='No'
+                                    actionBtn='Yes'
+                                    click={()=>deleteComment(comment)}
+                                    style={{display:'flex'}}
+                                />
+                                {/* Only will disable on refresh -- Need to fix */}
+                                {comment.like ?
+                                
+                                <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)} disabled >
+                                    <MDBIcon size='lg' icon='thumbs-up' disabled />
+                                </MDBBtn>
+                                :
+                                
+                                <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)}  >
+                                    <MDBIcon size='lg' icon='thumbs-up' />
+                                </MDBBtn>
+                                }
+        
+                                {comment.dislike ?
+                                
+                                <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)} disabled >
+                                    <MDBIcon size='lg' icon='thumbs-down' disabled />
+                                </MDBBtn>
+                                :
+                                
+                                <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)}  >
+                                <MDBIcon size='lg' icon='thumbs-down' />
+                                </MDBBtn>
+                                }
                             </div>
                         </MDBCard>
                         )
