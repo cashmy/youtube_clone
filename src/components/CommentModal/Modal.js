@@ -14,6 +14,10 @@ toggle = nr => () => {
   });
 }
 
+sendToCommentTable = () => {
+  this.props.commentTableCallback(this.state.modal12)
+}
+
 render() {
     return (
         <MDBContainer>

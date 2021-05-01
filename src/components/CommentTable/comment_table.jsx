@@ -9,16 +9,18 @@ import React, {useState, useEffect} from 'react';
 // import { combineReducers } from 'redux';
 import LibraryServices from '../../Services/request';
 import ModalPage from '../CommentModal/Modal';
-// import AddEditComment from '../CommentsCRUD/add_edit_comment';
 import './comment_table.css'
 
 export const CommentHistoryTable = (props) => {
 
-    const [commentData, setCommentData] = useState()
+    const [commentData, setCommentData] = useState();
     const [commentLikes, setCommentLikes] = useState({
         like: false,
         dislike: false
-    })
+    });
+    const [toggleModal, setToggleModal] = useState({
+        modal12: false
+    });
     const [replyComment, setReplyComment] = useState({
         video: props.yt_video_id,
         id: null,
@@ -35,11 +37,22 @@ export const CommentHistoryTable = (props) => {
             setCommentData(response.data)
             )
         
-    }, [])
+        setReplyComment(replyComment)
+        setCommentData(commentData)
+        setToggleModal(toggleModal)
+        
+    }, [replyComment, commentData, toggleModal]);
+
+    const handleModalCallback = (childData) => {
+        setToggleModal({
+            modal12: childData
+        })
+    };
 
     const handleOnChangeReply = (e) => {
         setReplyComment({ ...replyComment, comment_text: e.target.value})
-    }
+
+    };
 
     const handleLike = (comment) => {
 
@@ -96,6 +109,9 @@ export const CommentHistoryTable = (props) => {
             console.log(error)
         })
         setCommentData(commentData)
+        setToggleModal({
+            modal12: false
+        })
     }
 
     const createReply = (comment) => {
@@ -113,25 +129,38 @@ export const CommentHistoryTable = (props) => {
         setReplyComment(
             data
         )
+        clearForm()
+    }
+
+    function clearForm(){
+        setReplyComment({
+            video: props.yt_video_id,
+            id: null,
+            comment_text: '',
+            originalComment: null,
+            like: false,
+            dislike: false
+        })
+        setToggleModal({
+            modal12: false
+        })
     }
 
     const handleOnClick = (comment) => {
         console.log('Clicked Comment >>', comment)
     }
 
-    const sortArr = () => {
-    }
-
     
     return (
         <MDBCol className='col-md-4'>
-            <MDBCard>
+            <div className='comment_container'>
+            <MDBCard border='white' >
                 <MDBCardBody>
-                {commentData ? commentData.map((comment, i) => {
+                {commentData ? commentData.map(comment => {
 
                     if(!comment.original_comment){
                     return (
-                    <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} >
+                    <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} border='white' >
                         {comment.id}
                         {!comment.original_comment ? 
                             <MDBCardBody>
@@ -142,64 +171,74 @@ export const CommentHistoryTable = (props) => {
 
                         }
 
-                        <div className='buttons' style={{display: 'flex', flexDirection:'row'}}>
-                            {/* Reply Comment Modal */}
-                            <ModalPage
-                                color='mdb-color'
-                                type='Reply'
-                                click={() => createReply(comment)}
-                                change={handleOnChangeReply}
-                                value={replyComment.comment_text}
-                                title={`Replying to >> ${comment.comment_text}`}
-                                content=''
-                                closeBtn='Cancel'
-                                actionBtn='Save Changes'
-                            />
+                        <div id='buttons'>
 
-                            {/* Delete Comment Modal */}
-                            <ModalPage
-                                color='danger'
-                                type='Delete'
-                                title='Delete Comment'
-                                inputType = 'text'
-                                content='Are you sure you want to delete the comment?'
-                                closeBtn='No'
-                                actionBtn='Yes'
-                                click={()=>deleteComment(comment)}
-                                style={{display:'flex'}}
-                            />
-                            {/* Only will disable on refresh -- Need to fix */}
-                            {comment.like ?
-                                    <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)} disabled >
-                                        <MDBIcon size='lg' icon='thumbs-up' disabled />
-                                    </MDBBtn>
-                                :
-                                    <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)}  >
-                                        <MDBIcon size='lg' icon='thumbs-up' />
-                                    </MDBBtn>
-                            }
-                            {comment.dislike ?
-                                    <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)} disabled >
-                                        <MDBIcon size='lg' icon='thumbs-down' disabled />
-                                    </MDBBtn>
-                                :
-                                    <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)}  >
-                                        <MDBIcon size='lg' icon='thumbs-down' />
-                                    </MDBBtn>
-                            }
+                        {/* Reply Comment Modal */}
+                        <ModalPage
+                        commentTableCallback={handleModalCallback}
+                        color='mdb-color'
+                        type='Reply'
+                        click={() => createReply(comment)}
+                        change={handleOnChangeReply}
+                        value={replyComment.comment_text}
+                        title={`Replying to ${comment.comment_text}`}
+                        content=''
+                        closeBtn='Cancel'
+                        actionBtn='Reply'
+                        />
+
+                        {/* Delete Comment Modal */}
+                        <ModalPage
+                        commentTableCallback={handleModalCallback}
+                        color='danger'
+                        type='Delete'
+                        title='Delete Comment'
+                        inputType = 'text'
+                        content='Are you sure you want to delete the comment?'
+                        closeBtn='No'
+                        actionBtn='Yes'
+                        click={()=>deleteComment(comment)}
+                        style={{display:'flex'}}
+                        />
+                        {/* Only will disable on refresh -- Need to fix */}
+                        {comment.like ?
+                        
+                        <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)} disabled >
+                        <MDBIcon size='lg' icon='thumbs-up' disabled />
+                        </MDBBtn>
+                        :
+                        
+                        <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)}  >
+                        <MDBIcon size='lg' icon='thumbs-up' />
+                        </MDBBtn>
+                        }
+
+                        {comment.dislike ?
+                        
+                        <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)} disabled >
+                        <MDBIcon size='lg' icon='thumbs-down' disabled />
+                        </MDBBtn>
+                        :
+                        
+                        <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)}  >
+                        <MDBIcon size='lg' icon='thumbs-down' />
+                        </MDBBtn>
+                        }
+
+
                         </div>
                     </MDBCard>
                     )
                 }
                 if (comment.original_comment){
                     return (
-                        <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} >
-                            Reply &#8658; #{comment.original_comment}
+                        <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} border='white' >
+                            <span>Reply &#8658; #{comment.original_comment}</span>
                                 <MDBCardBody>
                                     {comment.comment_text}
                                 </MDBCardBody>
     
-                            <div className='buttons' style={{display: 'flex', flexDirection:'row'}}>
+                            <div id='buttons'>
     
                                 {/* Delete Comment Modal */}
                                 <ModalPage
@@ -241,10 +280,6 @@ export const CommentHistoryTable = (props) => {
                         </MDBCard>
                         )
                 }
-                
-            
-                
-                    
                 }) 
                 
                 
@@ -262,6 +297,7 @@ export const CommentHistoryTable = (props) => {
                 }
                 </MDBCardBody>
             </MDBCard>
+            </div>
         </MDBCol>
     )
 }
