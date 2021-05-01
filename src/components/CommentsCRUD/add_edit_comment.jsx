@@ -70,19 +70,19 @@ const AddEditComment = (props) => {
             <MDBCardBody>
                 Edit Comment
                 <MDBInput
-                htmlFor="comment_text"
-                type="textarea"
-                background  
-                id="comment_text" 
-                name="comment_text"
-                value={initialState.comment_text}
-                onChange={onChangeComment}>
+                    htmlFor="comment_text"
+                    type="textarea"
+                    background  
+                    id="comment_text" 
+                    name="comment_text"
+                    value={initialState.comment_text}
+                    onChange={onChangeComment}>
                 </MDBInput>
                 <MDBBtn gradient="peach" onClick={() => clearForm} >
-                Cancel
+                    Cancel
                 </MDBBtn>
                 <MDBBtn gradient="peach" >
-                Update
+                    Update
                 </MDBBtn>
             </MDBCardBody>
         </MDBCard>
@@ -93,21 +93,21 @@ const AddEditComment = (props) => {
         <MDBCardBody>
             Post Comment
             <form>
-            <MDBInput
-            htmlFor="comment_text"
-            type="textarea"
-            background  
-            id="comment_text" 
-            name="comment_text"
-            value={initialState.comment_text}
-            onChange={onChangeComment}>
-            </MDBInput>
-            <MDBBtn gradient="peach" onClick={clearForm} type='reset' >
-                Cancel
-            </MDBBtn>
-            <MDBBtn gradient="peach" onClick={saveComment} >
-            Comment
-            </MDBBtn>
+                <MDBInput
+                    htmlFor="comment_text"
+                    type="textarea"
+                    background  
+                    id="comment_text" 
+                    name="comment_text"
+                    value={initialState.comment_text}
+                    onChange={onChangeComment}>
+                </MDBInput>
+                <MDBBtn gradient="peach" onClick={clearForm} type='reset' >
+                    Cancel
+                </MDBBtn>
+                <MDBBtn gradient="peach" onClick={saveComment} >
+                    Comment
+                </MDBBtn>
             </form>
         </MDBCardBody>
         </MDBCard>
