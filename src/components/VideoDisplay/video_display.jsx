@@ -43,7 +43,6 @@ class VideoDisplay extends Component {
         if (text.length > 250) {
             let tempText = text.substr(0,249)
             tempText = tempText + ' ...'
-            console.log("Reducted Text: ", tempText)
             return tempText 
         } else {
             return text

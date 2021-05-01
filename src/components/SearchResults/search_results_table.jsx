@@ -9,9 +9,9 @@ import {
     MDBTable,
     MDBTableBody,
 } from "mdbreact";
-// import getVideoInfo from '../../Services/yt_axios';
 import './search_results_table.css'
 import axios from 'axios'
+import VideoCard from './video_card'
 
 
 const SearchResultsTable = (props) => {
@@ -38,9 +38,11 @@ const SearchResultsTable = (props) => {
     }, [props.search_text, props.related_yt_video_id])
 
 
-    const handleOnClick = (video_id, props) => {
+    // const handleOnClick = (video_id, props) => {
+    //     props.parentCallback(video_id)
+    // }
 
-        // TODO: update props info to VideoPlayer component
+    const handleVideoCardClick = (video_id) => {
         props.parentCallback(video_id)
     }
 
@@ -52,46 +54,9 @@ const SearchResultsTable = (props) => {
 
         for (let i = 0; i < videoData.length; i++) {
 
-            // Reduce Description size (limit 50 characters)
-            let tempDescription = ''
-            let tempString = videoData[i].snippet.description
-            if (tempString.length > 50) {
-                let tempText = tempString.substr(0,49)
-                tempText = tempText + ' ...'
-                console.log("Reducted Text: ", tempText)
-                tempDescription = tempText
-            } else {
-                tempDescription = videoData[i].snippet.description
-            }
-        
-
-            let card = 
-                <MDBCard className="mb-3"
-                         onClick={() => handleOnClick(videoData[i].id.videoId, props)}
-                         style={{ cursor: 'pointer' }}
-                >
-                    <MDBRow className="g-0">
-                        <MDBCol className="md-4 align-middle">
-                            <img 
-                                width = {videoData[i].snippet.thumbnails.medium.width}
-                                height = {videoData[i].snippet.thumbnails.medium.height}
-                                src={videoData[i].snippet.thumbnails.medium.url}
-                                // src={'https://www.youtube.com/embed/' + videoData[i].id.videoId + '?autoplay=1&origin=http://example.com'}
-                                className="img-fluid" alt=""
-                            />
-                        </MDBCol>
-                        <MDBCol className="md-8">
-                            <MDBCardBody>
-                                <MDBCardTitle>
-                                    {videoData[i].snippet.title}
-                                </MDBCardTitle>
-                                <MDBCardText>
-                                    {tempDescription}
-                                </MDBCardText>
-                            </MDBCardBody>
-                        </MDBCol>
-                    </MDBRow>
-                </MDBCard>
+            let card = <VideoCard videoData={videoData[i]} 
+                                  parentCallback={handleVideoCardClick}
+                        />
 
             videosMapResult.push({
                 yt_video_id: videoData[i].id.videoId,
