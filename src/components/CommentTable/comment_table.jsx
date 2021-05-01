@@ -1,4 +1,4 @@
-import { MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBTable, MDBTableBody } from 'mdbreact';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon} from 'mdbreact';
 import React, {useState, useEffect} from 'react';
 import LibraryServices from '../../Services/request';
 import ModalPage from '../CommentModal/Modal';
@@ -6,11 +6,14 @@ import './comment_table.css'
 
 export const CommentHistoryTable = (props) => {
 
-    const [commentData, setCommentData] = useState()
+    const [commentData, setCommentData] = useState();
     const [commentLikes, setCommentLikes] = useState({
         like: false,
         dislike: false
-    })
+    });
+    const [toggleModal, setToggleModal] = useState({
+        modal12: false
+    });
     const [replyComment, setReplyComment] = useState({
         video: props.yt_video_id,
         id: null,
@@ -29,13 +32,20 @@ export const CommentHistoryTable = (props) => {
         
         setReplyComment(replyComment)
         setCommentData(commentData)
+        setToggleModal(toggleModal)
         
-    }, [replyComment, commentData])
+    }, [replyComment, commentData, toggleModal]);
+
+    const handleModalCallback = (childData) => {
+        setToggleModal({
+            modal12: childData
+        })
+    };
 
     const handleOnChangeReply = (e) => {
         setReplyComment({ ...replyComment, comment_text: e.target.value})
 
-    }
+    };
 
     const handleLike = (comment) => {
 
@@ -92,6 +102,9 @@ export const CommentHistoryTable = (props) => {
             console.log(error)
         })
         setCommentData(commentData)
+        setToggleModal({
+            modal12: false
+        })
     }
 
     const createReply = (comment) => {
@@ -109,6 +122,21 @@ export const CommentHistoryTable = (props) => {
         setReplyComment(
             data
         )
+        clearForm()
+    }
+
+    function clearForm(){
+        setReplyComment({
+            video: props.yt_video_id,
+            id: null,
+            comment_text: '',
+            originalComment: null,
+            like: false,
+            dislike: false
+        })
+        setToggleModal({
+            modal12: false
+        })
     }
 
     const handleOnClick = (comment) => {
@@ -121,7 +149,7 @@ export const CommentHistoryTable = (props) => {
             <div className='comment_container'>
             <MDBCard border='white' >
                 <MDBCardBody>
-                {commentData ? commentData.map((comment, i) => {
+                {commentData ? commentData.map(comment => {
 
                     if(!comment.original_comment){
                     return (
@@ -140,6 +168,7 @@ export const CommentHistoryTable = (props) => {
 
                         {/* Reply Comment Modal */}
                         <ModalPage
+                        commentTableCallback={handleModalCallback}
                         color='mdb-color'
                         type='Reply'
                         click={() => createReply(comment)}
@@ -153,6 +182,7 @@ export const CommentHistoryTable = (props) => {
 
                         {/* Delete Comment Modal */}
                         <ModalPage
+                        commentTableCallback={handleModalCallback}
                         color='danger'
                         type='Delete'
                         title='Delete Comment'
@@ -245,10 +275,6 @@ export const CommentHistoryTable = (props) => {
                         </MDBCard>
                         )
                 }
-                
-            
-                
-                    
                 }) 
                 
                 

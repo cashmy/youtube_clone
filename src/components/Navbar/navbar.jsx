@@ -76,7 +76,7 @@ render() {
                 <MDBNavLink to="#!">Features</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
-                <MDBDropdown>
+                {/* <MDBDropdown>
                   <MDBDropdownToggle nav caret>
                     <div className="d-none d-md-inline">Dropdown</div>
                   </MDBDropdownToggle>
@@ -86,7 +86,7 @@ render() {
                     <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                     <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                   </MDBDropdownMenu>
-                </MDBDropdown>
+                </MDBDropdown> */}
               </MDBNavItem>
             </MDBNavbarNav>
 

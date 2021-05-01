@@ -1,6 +1,5 @@
 import React from "react";
 import { MDBContainer, MDBFooter } from "mdbreact";
-
 const FooterPage = () => {
   return (
     <MDBFooter className="font-small pt-4 mt-4 fixed-bottom" >

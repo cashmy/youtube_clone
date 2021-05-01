@@ -14,6 +14,10 @@ toggle = nr => () => {
   });
 }
 
+sendToCommentTable = () => {
+  this.props.commentTableCallback(this.state.modal12)
+}
+
 render() {
     return (
         <MDBContainer>
@@ -29,7 +33,7 @@ render() {
             </MDBModalBody>
             <MDBModalFooter>
             <MDBBtn color="secondary" size='md' onClick={this.toggle(12)}>{this.props.closeBtn}</MDBBtn>
-            <MDBBtn size='md' color="primary" onClick={this.props.replyClick}>{this.props.actionBtn}</MDBBtn>
+            <MDBBtn size='md' color="primary" onClick={this.props.click}>{this.props.actionBtn}</MDBBtn>
             </MDBModalFooter>
         </MDBModal>
         </MDBContainer>
