@@ -15,13 +15,20 @@ class SearchBar extends Component{
         })
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = () => {
         this.props.parentCallback(this.state.inputValue)
         this.setState({
             searchText: this.state.inputValue
         })
-        e.preventDefault();
+        this.clearInput()
         
+    }
+
+    clearInput =() => {
+        this.setState({
+            searchText: '',
+            inputValue: ''
+        })
     }
 
 
