@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
     MDBCol,
-    MDBRow, 
     MDBCard,
-    MDBCardBody,
-    MDBCardTitle,
-    MDBCardText,
     MDBTable,
     MDBTableBody,
 } from "mdbreact";
