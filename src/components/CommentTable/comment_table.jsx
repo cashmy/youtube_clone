@@ -156,7 +156,7 @@ export const CommentHistoryTable = (props) => {
             <MDBCard border='white' >
                 <MDBCardBody>
                 {commentData ? commentData.map(comment => {
-
+                    // New comment ... not a reply
                     if(!comment.original_comment && comment.video === props.yt_video_id){
                     return (
                     <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} border='white' >
@@ -174,53 +174,53 @@ export const CommentHistoryTable = (props) => {
 
                         {/* Reply Comment Modal */}
                         <ModalPage
-                        commentTableCallback={handleModalCallback}
-                        color='mdb-color'
-                        type='Reply'
-                        click={() => createReply(comment)}
-                        change={handleOnChangeReply}
-                        value={replyComment.comment_text}
-                        title={`Replying to ${comment.comment_text}`}
-                        content=''
-                        closeBtn='Cancel'
-                        actionBtn='Reply'
+                            commentTableCallback={handleModalCallback}
+                            color='mdb-color'
+                            type='Reply'
+                            click={() => createReply(comment)}
+                            change={handleOnChangeReply}
+                            value={replyComment.comment_text}
+                            title={`Replying to ${comment.comment_text}`}
+                            content=''
+                            closeBtn='Cancel'
+                            actionBtn='Reply'
                         />
 
                         {/* Delete Comment Modal */}
                         <ModalPage
-                        commentTableCallback={handleModalCallback}
-                        color='danger'
-                        type='Delete'
-                        title='Delete Comment'
-                        inputType = 'text'
-                        content='Are you sure you want to delete the comment?'
-                        closeBtn='No'
-                        actionBtn='Yes'
-                        click={()=>deleteComment(comment)}
-                        style={{display:'flex'}}
+                            commentTableCallback={handleModalCallback}
+                            color='danger'
+                            type='Delete'
+                            title='Delete Comment'
+                            inputType = 'text'
+                            content='Are you sure you want to delete the comment?'
+                            closeBtn='No'
+                            actionBtn='Yes'
+                            click={()=>deleteComment(comment)}
+                            style={{display:'flex'}}
                         />
                         {/* Only will disable on refresh -- Need to fix */}
                         {comment.like ?
                         
                         <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)} disabled >
-                        <MDBIcon size='lg' icon='thumbs-up' disabled />
+                            <MDBIcon size='lg' icon='thumbs-up' disabled />
                         </MDBBtn>
                         :
                         
                         <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleLike(comment)}  >
-                        <MDBIcon size='lg' icon='thumbs-up' />
+                            <MDBIcon size='lg' icon='thumbs-up' />
                         </MDBBtn>
                         }
 
                         {comment.dislike ?
                         
                         <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)} disabled >
-                        <MDBIcon size='lg' icon='thumbs-down' disabled />
+                            <MDBIcon size='lg' icon='thumbs-down' disabled />
                         </MDBBtn>
                         :
                         
                         <MDBBtn tag='a' size='sm' color='blue' onClick={() => handleDislike(comment)}  >
-                        <MDBIcon size='lg' icon='thumbs-down' />
+                            <MDBIcon size='lg' icon='thumbs-down' />
                         </MDBBtn>
                         }
 
@@ -229,6 +229,7 @@ export const CommentHistoryTable = (props) => {
                     </MDBCard>
                     )
                 }
+                // A reply to a comment
                 if (comment.original_comment && comment.video === props.yt_video_id){
                     return (
                         <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} border='white' >

@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import LibraryServices from '../../Services/request';
 import {MDBCard, MDBCardBody, MDBInput, MDBBtn} from 'mdbreact';
-import { Fragment } from 'react';
+// import { Fragment } from 'react';
 
 const AddEditComment = (props) => {
 
@@ -26,18 +26,25 @@ const AddEditComment = (props) => {
     const saveComment = () => {
         debugger
         const data = {
-            video: initialState.video,
+            video: props.yt_video_id,
             id: initialState.id,
             comment_text: initialState.comment_text,
             originalComment: initialState.originalComment,
             like: initialState.like,
             dislike: initialState.dislike
         };
+        console.log('\n\n *** Saving commnet ***')
+        console.log('State:', initialState);
+        console.log('Props: ', props)
         LibraryServices.createComment(data)
         .then(data => {
             setInitialState(data)
             console.log(initialState)
         })
+        .catch(error => {
+            alert('There was an error! ' + error.message);
+          }
+        )
 
         clearForm()
     }
