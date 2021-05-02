@@ -39,9 +39,8 @@ export const CommentHistoryTable = (props) => {
         
         setReplyComment(replyComment)
         setCommentData(commentData)
-        setToggleModal(toggleModal)
         
-    }, [replyComment, commentData, toggleModal]);
+    }, [replyComment, commentData]);
 
     const handleModalCallback = (childData) => {
         setToggleModal({
@@ -158,7 +157,7 @@ export const CommentHistoryTable = (props) => {
                 <MDBCardBody>
                 {commentData ? commentData.map(comment => {
 
-                    if(!comment.original_comment){
+                    if(!comment.original_comment && comment.video === props.yt_video_id){
                     return (
                     <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} border='white' >
                         {comment.id}
@@ -230,7 +229,7 @@ export const CommentHistoryTable = (props) => {
                     </MDBCard>
                     )
                 }
-                if (comment.original_comment){
+                if (comment.original_comment && comment.video === props.yt_video_id){
                     return (
                         <MDBCard className="mb-3" onDoubleClick={() => handleOnClick(comment)} style={{cursor: 'pointer'}} key={comment.id} border='white' >
                             <span>Reply &#8658; #{comment.original_comment}</span>

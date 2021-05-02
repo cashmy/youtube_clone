@@ -24,8 +24,9 @@ const AddEditComment = (props) => {
     }
 
     const saveComment = () => {
+        debugger
         const data = {
-            video: props.yt_video_id,
+            video: initialState.video,
             id: initialState.id,
             comment_text: initialState.comment_text,
             originalComment: initialState.originalComment,
@@ -33,11 +34,10 @@ const AddEditComment = (props) => {
             dislike: initialState.dislike
         };
         LibraryServices.createComment(data)
-        setInitialState({
-            ...initialState,
-            comment_text: data.comment_text,
+        .then(data => {
+            setInitialState(data)
+            console.log(initialState)
         })
-        console.log('initialState',initialState)
 
         clearForm()
     }
